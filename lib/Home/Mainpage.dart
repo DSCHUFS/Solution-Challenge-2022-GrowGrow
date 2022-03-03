@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/resources.dart';
-import 'package:home/TodoListWidget.dart';
+import 'TodoListWidget.dart';
 import 'todo.dart';
 import 'todoData.dart';
-import 'drawer.dart';
+import 'package:home/drawer.dart';
 
 
 class Home extends StatefulWidget {

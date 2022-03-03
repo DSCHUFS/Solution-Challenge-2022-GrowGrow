@@ -1,12 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:home/NewsData.dart';
-import 'package:home/NewsReport.dart';
-import 'package:home/NewsData.dart';
-import 'Mainpage.dart';
-import 'NewsContainer.dart';
-import 'NewsPage.dart';
-import 'MyTree.dart';
+import 'Home/Mainpage.dart';
+import 'MyTree/MyTree.dart';
+import 'News/NewsData.dart';
+import 'News/NewsPage.dart';
 
 void main() {
   runApp(const test());

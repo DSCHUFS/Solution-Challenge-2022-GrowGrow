@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:home/NewsReport.dart';
-import 'package:home/NewsTest.dart';
-import 'package:home/NewsData.dart';
+import 'package:home/News/NewsReport.dart';
+import 'package:home/News/NewsTest.dart';
+import 'package:home/News/NewsData.dart';
 import 'package:home/main.dart';
 
 class NewsContainer extends StatelessWidget {

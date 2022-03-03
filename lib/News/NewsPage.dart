@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:home/NewsData.dart';
-import 'package:home/NewsReport.dart';
-import 'package:home/NewsData.dart';
+import 'package:home/News/NewsData.dart';
+import 'package:home/News/NewsReport.dart';
+import 'package:home/News/NewsData.dart';
 import 'package:home/resources.dart';
 import 'NewsContainer.dart';
-import 'main.dart';
+import 'package:home/main.dart';
 import 'package:home/drawer.dart';
 
 class NewsMain extends StatelessWidget {

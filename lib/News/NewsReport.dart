@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:home/NewsTest.dart';
+import 'package:home/News/NewsTest.dart';
 
 class NewsReport extends StatelessWidget {
   const NewsReport({

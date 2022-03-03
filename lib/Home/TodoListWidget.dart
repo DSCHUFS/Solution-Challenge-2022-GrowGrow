@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'resources.dart';
+import 'package:home/resources.dart';
 
 class TodoList extends StatefulWidget {
   const TodoList({Key? key}) : super(key: key);
@@ -34,19 +34,21 @@ class _TodoListState extends State<TodoList> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.fromLTRB(15, 5, 15, 0),
-            padding: EdgeInsets.all(8.0),
-            height: 200,
-            //width: 400,
-            decoration: BoxDecoration(
-              border:
-              Border.all(color: deepGreen, width: 3),
-              borderRadius: BorderRadius.all(
-                  Radius.circular(15.0)
+          SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(15, 5, 15, 0),
+              padding: EdgeInsets.all(8.0),
+              height: 200,
+              //width: 400,
+              decoration: BoxDecoration(
+                border:
+                Border.all(color: deepGreen, width: 3),
+                borderRadius: BorderRadius.all(
+                    Radius.circular(15.0)
+                ),
               ),
+              child: ListView()
             ),
-            child: ListView()
           ),
         ],
       ),
