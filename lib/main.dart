@@ -6,6 +6,7 @@ import 'package:home/NewsData.dart';
 import 'Mainpage.dart';
 import 'NewsContainer.dart';
 import 'NewsPage.dart';
+import 'MyTree.dart';
 
 void main() {
   runApp(const test());
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
               Home(),
               Text('Two'),
               NewsMain(),
-              Text('Map'),
+              MyTree(),
             ],
           ),
           bottomNavigationBar: Container(

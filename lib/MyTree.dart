@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
 class MyTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -132,66 +130,6 @@ class MapSampleState extends State<MapSample> {
         initialCameraPosition: _kGooglePlex,
         onCameraMove: (_) {},
         myLocationButtonEnabled: false,
-      ),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Navigation Bar',
-      theme: ThemeData(primaryColor: Colors.white),
-      debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          body: TabBarView(
-            children: [
-              Text('One'),
-              Text('Two'),
-              Text('Three'),
-              MyTree(),
-            ],
-          ),
-          bottomNavigationBar: Container(
-            child: TabBar(
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorWeight: 2,
-              tabs: [
-                Tab(
-                    icon: ImageIcon(
-                      AssetImage('image/seedd.png'),
-                    ),
-                    text: 'one'),
-                Tab(
-                  icon: ImageIcon(
-                    AssetImage('image/garden.png'),
-                  ),
-                  text: 'two',
-                ),
-                Tab(
-                  icon: ImageIcon(
-                    AssetImage('image/shovel.png'),
-                  ),
-                  text: 'three',
-                ),
-                Tab(
-                  icon: ImageIcon(
-                    AssetImage('image/tree.png'),
-                  ),
-                  text: 'MyTree',
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
