@@ -1,12 +1,17 @@
 import 'dart:async';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 
-class MyTree extends StatelessWidget {
+class MyTree extends StatefulWidget {
+  @override
+  State<MyTree> createState() => _MyTreeState();
+}
+
+class _MyTreeState extends State<MyTree> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -75,16 +80,30 @@ class MyTree extends StatelessWidget {
   }
 }
 
-Widget _buildlist() => ListView(children: [
-  _tree('Seoul, Korea', '220213'),
-  _tree('Daejeon, Korea', '220214'),
-]);
 
-ListTile _tree(String title, String subtitle) => ListTile(
-  //leading: IconButton(icon: Icon(Icons.forest_rounded), onPressed: () {}),
-  title: Text(title),
-  subtitle: Text(subtitle),
-);
+Widget _buildlist() => ListView(children: [
+      _tree('Seoul, Korea', '220213',0),
+      _tree('Daejeon, Korea', '220214',1),
+    ]);
+
+ListTile _tree(String title, String subtitle, int leading) => ListTile(
+      leading: FloatingActionButton(child :Text(),
+      onPressed: ( ) {
+        if (leading == 0) {
+          setState(() {
+            Image.asset('images/100%.png');
+          });
+        } else {
+          setState(() {
+            Image.asset('images/40%.png');
+          });
+        }}),
+
+      title: Text(title),
+      subtitle: Text(subtitle),
+      trailing: Icon(Icons.more_vert),
+    );
+
 
 class MapSample extends StatefulWidget {
   @override
@@ -106,7 +125,7 @@ class MapSampleState extends State<MapSample> {
           position: LatLng(37.5642135, 127.0016985),
           draggable: true,
           icon:
-          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+              BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
           infoWindow: InfoWindow(
             title: 'My First Tree',
             snippet: '220213',
