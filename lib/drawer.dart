@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'resources.dart';
+import 'Home/resources.dart';
 
 class drawer extends StatefulWidget {
   const drawer({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _drawerState extends State<drawer> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(5.0),
-                            child: Image.asset('images/tree.png', width: 40),
+                            child: Image.asset('images/tree_drawer.png', width: 40),
                           ),
                           Text('20', style: TextStyle(
                             fontFamily: 'Inter-Regular',
