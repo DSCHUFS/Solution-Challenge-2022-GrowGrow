@@ -15,7 +15,7 @@ class _PrintImageState extends State<PrintImage> {
 
   @override
   Widget build(BuildContext context) {
-    if(imageNum == 120)
+    if(imageNum >= 120)
       return Button();
     else
       return Images();

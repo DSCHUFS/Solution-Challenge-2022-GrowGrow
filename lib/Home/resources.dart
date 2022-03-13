@@ -10,8 +10,7 @@ const darkGrey = Color(0xFF615E5C);
 
 
 TodoData todoData = TodoData();
-num percent = 100;
-int userPoint = 250;
+int userPoint = 0;
+late num percent = userPoint / 2;
 late int imageNum = (percent ~/ 20 + 1) * 20;
 TextEditingController inputString = TextEditingController();
-String oneTodo = '';

@@ -2,9 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/Home/resources.dart';
-import 'TodoListWidget.dart';
 import 'todo.dart';
 import 'todoData.dart';
 import 'package:home/drawer.dart';
@@ -82,6 +82,8 @@ class _HomeState extends State<Home> {
             center: PrintImage(),
             progressColor: lightGreen,
             backgroundColor: Colors.transparent,
+            animation: true,
+            animateFromLastPercent: true,
           ),
 
           Padding(
@@ -131,7 +133,21 @@ class _HomeState extends State<Home> {
                                   Border.all(color: deepGreen, width: 3),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(15.0)),),
-                            child: TodoList(),
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                  itemCount: todoData.getNum(),
+                                  itemBuilder: (context, index){
+                                    return CheckboxListTile(
+                                        title: Text('${todoData.getContent(index)}'),
+                                        checkColor: deepGreen,
+                                        controlAffinity: ListTileControlAffinity.leading,
+                                        value: false,
+                                        onChanged: (bool? value){
+                                          timeDilation = value! ? 1.0 : 5.0;
+                                          _deleteTodo(todoData.TodoDB[index]);
+                                        });
+                              }
+                              ),
                             )
                 ],
               ),
@@ -150,6 +166,21 @@ class _HomeState extends State<Home> {
   void dispose(){
     inputString.dispose();
     super.dispose();
+  }
+
+  void _addTodo(Todo todo){
+    setState(() {
+      todoData.addTodo(todo);
+    });
+  }
+
+  void _deleteTodo(Todo todo){
+    setState(() {
+      todoData.deleteTodo(todo);
+      userPoint += todo.todoPoint;
+      percent = userPoint / 2;
+      imageNum = (percent ~/ 20 + 1) * 20;
+    });
   }
 
   void AddTodoDialog() {
@@ -172,44 +203,58 @@ class _HomeState extends State<Home> {
 
                 content: Container(
                     width: double.minPositive,
-                    child: TodoList()),
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: todoData.getNum(),
+                        itemBuilder: (context, index){
+                          return CheckboxListTile(
+                              title: Text('${todoData.getContent(index)}'),
+                              checkColor: deepGreen,
+                              controlAffinity: ListTileControlAffinity.leading,
+                              value: false,
+                              onChanged: (bool? value){
+                                timeDilation = value! ? 1.0 : 5.0;
+                                _deleteTodo(todoData.TodoDB[index]);
+                              });
+                        }
+                    )
+                ),
 
                 actions: <Widget>[
                   TextField(
-                    controller: inputString,
-                    textInputAction: TextInputAction.go,
-                    onSubmitted: (value) {
-                      Todo newTodo = Todo(inputString.text, false, DateTime(0,0,0,0,0), 2);
-                      oneTodo = newTodo.todoContent;
-                      todoData.addTodo(newTodo);
-                      inputString.clear();
-                    },
-                    showCursor: false,
+                  controller: inputString,
+                  textInputAction: TextInputAction.go,
+                  onSubmitted: (value) {
+                    Todo newTodo = Todo(inputString.text, false, DateTime.now(), 15);
+                    _addTodo(newTodo);
+                    inputString.clear();
+                  },
+                  showCursor: false,
 
-                    style: TextStyle(
-                        fontFamily: 'Inter-Regular',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                  style: TextStyle(
+                      fontFamily: 'Inter-Regular',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
 
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
                             width: 0,
                             style: BorderStyle.none)
-                        ),
-                      hintText: 'Add a task...',
-                      hintStyle: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Inter-Regular',
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      filled: true,
-                      fillColor: grey,
-                      )
                     ),
+                    hintText: 'Add a task...',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Inter-Regular',
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    filled: true,
+                    fillColor: grey,
+                  )
+              ),
                   ],
 
             ),
