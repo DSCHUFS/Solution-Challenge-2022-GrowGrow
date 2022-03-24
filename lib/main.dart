@@ -3,17 +3,11 @@ import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
 import 'News/NewsPage.dart';
-<<<<<<< HEAD
 import 'login.dart';
-import 'package:firebase_core/firebase_core.dart';
-
-void main() async{
-=======
 import 'package:firebase_core/firebase_core.dart';
 
 
 void main() {
->>>>>>> master
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
   runApp(const test());
