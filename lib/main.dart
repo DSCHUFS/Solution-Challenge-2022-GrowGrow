@@ -3,9 +3,14 @@ import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
 import 'News/NewsPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(const test());
+
 }
 
 NewsData newsData = NewsData();
@@ -16,6 +21,7 @@ class test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     );
   }
@@ -71,7 +77,7 @@ class MyApp extends StatelessWidget {
                   icon: ImageIcon(
                     AssetImage('images/page4icon.png'),
                   ),
-                  text: 'Map',
+                  text: 'MyTree',
                 ),
               ],
             ),
