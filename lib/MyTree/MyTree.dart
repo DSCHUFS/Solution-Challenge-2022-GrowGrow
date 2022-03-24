@@ -80,29 +80,24 @@ class _MyTreeState extends State<MyTree> {
   }
 }
 
-
+Image plant(int leading){
+  if (leading == 0) {
+    return Image.asset('images/100%.png');
+  } else {
+    return Image.asset('images/40%.png');
+  }
+}
 Widget _buildlist() => ListView(children: [
-      _tree('Seoul, Korea', '220213',0),
-      _tree('Daejeon, Korea', '220214',1),
-    ]);
+  _tree('Seoul, Korea', '220213',0),
+  _tree('Daejeon, Korea', '220214',1),
+]);
 
 ListTile _tree(String title, String subtitle, int leading) => ListTile(
-      leading: FloatingActionButton(child :Text(),
-      onPressed: ( ) {
-        if (leading == 0) {
-          setState(() {
-            Image.asset('images/100%.png');
-          });
-        } else {
-          setState(() {
-            Image.asset('images/40%.png');
-          });
-        }}),
-
-      title: Text(title),
-      subtitle: Text(subtitle),
-      trailing: Icon(Icons.more_vert),
-    );
+  leading: plant(leading),
+  title: Text(title),
+  subtitle: Text(subtitle),
+  trailing: Icon(Icons.more_vert),
+);
 
 
 class MapSample extends StatefulWidget {
