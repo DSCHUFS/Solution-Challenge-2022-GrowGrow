@@ -101,7 +101,7 @@ class NewsContainer extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 10, 8, 3),
+                              padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
                               child: Expanded(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

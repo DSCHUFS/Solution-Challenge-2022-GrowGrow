@@ -3,8 +3,12 @@ import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
 import 'News/NewsPage.dart';
+import 'login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   runApp(const test());
 }
 
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               Home(),
-              Text('Two'),
+              LoginTest(),
               NewsMain(),
               MyTree(),
             ],
