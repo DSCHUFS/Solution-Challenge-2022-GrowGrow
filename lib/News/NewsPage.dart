@@ -60,23 +60,6 @@ class NewsMain extends StatelessWidget {
             ],
           ),
         ),
-        leading: Builder(builder: (context){
-          return Padding(
-            padding: const EdgeInsets.all(11.0),
-            child: GestureDetector(
-              onTap: () => Scaffold.of(context).openDrawer(),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/account.png'),
-                  ),
-                  border: Border.all(color: deepGreen, width: 1),
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          );
-        }),
       ),
       body:ListView.builder(
         itemCount: newsData.getNum(),
