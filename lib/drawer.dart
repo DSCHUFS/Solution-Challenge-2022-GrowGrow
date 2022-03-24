@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Home/resources.dart';
+import 'resources.dart';
 
 class drawer extends StatefulWidget {
   const drawer({Key? key}) : super(key: key);
@@ -63,7 +63,7 @@ class _drawerState extends State<drawer> {
                                 size: 40,
                               ),
                             ),
-                            Text('250', style: TextStyle(
+                            Text('$userPoint', style: TextStyle(
                               fontFamily: 'Inter-Regular',
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,)

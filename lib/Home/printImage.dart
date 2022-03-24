@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:home/MyTree/MyTree.dart';
-import 'resources.dart';
+import '../resources.dart';
 
 class PrintImage extends StatefulWidget {
   const PrintImage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _PrintImageState extends State<PrintImage> {
 
   @override
   Widget build(BuildContext context) {
-    if(imageNum >= 120)
+    if(imageNum >= 100)
       return Button();
     else
       return Images();
@@ -140,11 +140,17 @@ class _ButtonState extends State<Button> {
                           ),
                         ),
                         onTap: (){
+
+                          setState(() {
+                            userPoint = 0;
+                            percent = userPoint / 2;
+                            imageNum = (percent ~/ 20 + 1) * 20;
+                          });
                           Navigator.push(context, MaterialPageRoute(builder: (context) => MyTree()));
                           },
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.fromLTRB(8.0, 30.0, 8.0, 8.0),
                         child: Text('You can only plant trees in this area until July 24, 2022.'),
                       ),
                     ],
