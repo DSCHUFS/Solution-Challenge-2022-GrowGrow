@@ -16,6 +16,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   percent_indicator: ^3.4.0
   google_maps_flutter: ^2.1.1
+  cloud_firestore : ^3.1.7
+  firebase_database : ^7.1.0
   intl: ^0.17.0
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
