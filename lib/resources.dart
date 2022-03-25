@@ -14,3 +14,4 @@ int userPoint = 0;
 late num percent = userPoint / 2;
 late int imageNum = (percent ~/ 20 + 1) * 20;
 TextEditingController inputString = TextEditingController();
+String? Username = 'test';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:home/resources.dart';
 import 'Home/Mainpage.dart';
 import 'main.dart';
 
@@ -33,6 +34,10 @@ class LoginTest extends StatelessWidget {
 class HomeTest extends StatelessWidget {
   const HomeTest({Key? key}) : super(key: key);
 
+  void setUser(String? Name){
+   Username = Name;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,21 +47,31 @@ class HomeTest extends StatelessWidget {
           if (!snapshot.hasData) {
             return LoginWidget();
           } else {
-            return Center(
-              child: Column(
-                children: [
-                  Text("${snapshot.data?.displayName}asd"),
-                  ElevatedButton(onPressed: FirebaseAuth.instance.signOut,
-                      child: Text("logout"))
-                ],
-              ),
-            );
+            setUser(snapshot.data?.displayName);
+            return MyApp();
           }
         },
       ),
     );
   }
 }
+
+class LogoutWidget extends StatelessWidget {
+  const LogoutWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          ElevatedButton(onPressed: FirebaseAuth.instance.signOut,
+              child: Text("logout"))
+        ],
+      ),
+    );
+  }
+}
+
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({Key? key}) : super(key: key);

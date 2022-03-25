@@ -23,7 +23,7 @@ class test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      home: LoginTest(),
     );
   }
 }
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               Home(),
-              LoginTest(),
+              Text('2'),
               NewsMain(),
               MyTree(),
             ],
