@@ -4,23 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:home/Home/resources.dart';
+import 'package:home/resources.dart';
 import 'todo.dart';
 import 'todoData.dart';
 import 'package:home/drawer.dart';
 import 'printImage.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
-
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +28,7 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
-        leading: Builder(builder: (context){
+        leading: Builder(builder: (context) {
           return Padding(
             padding: const EdgeInsets.all(11.0),
             child: GestureDetector(
@@ -41,18 +38,18 @@ class _HomeState extends State<Home> {
                   image: DecorationImage(
                     image: AssetImage('images/account.png'),
                   ),
-                    border: Border.all(color: deepGreen, width: 1),
-                    shape: BoxShape.circle,
-                  ),
+                  border: Border.all(color: deepGreen, width: 1),
+                  shape: BoxShape.circle,
+                ),
               ),
-              ),
+            ),
           );
         }),
       ),
       body: Column(
-        children:[
+        children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -62,8 +59,9 @@ class _HomeState extends State<Home> {
                   size: 35.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('$userPoint',
+                  padding: const EdgeInsets.all(5.0),
+                  child: Text(
+                    '$userPoint',
                     style: TextStyle(
                       fontFamily: 'Inter-Regular',
                       fontSize: 25.0,
@@ -74,36 +72,33 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-
           CircularPercentIndicator(
             radius: 250.0,
             lineWidth: 10.0,
-            percent: percent/100,
+            percent: percent / 100,
             center: PrintImage(),
             progressColor: lightGreen,
             backgroundColor: Colors.transparent,
             animation: true,
             animateFromLastPercent: true,
           ),
-
           Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Text('${percent}%',
-                style: TextStyle(
-                  fontFamily: 'Inter-Regular',
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                ),
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              '${percent}%',
+              style: TextStyle(
+                fontFamily: 'Inter-Regular',
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-    ),
-
           GestureDetector(
-            onTap: ()
-            {
+            onTap: () {
               AddTodoDialog();
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Column(
                 children: [
                   Padding(
@@ -111,11 +106,7 @@ class _HomeState extends State<Home> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(
-                            Icons.check_box,
-                            color: deepGreen,
-                            size: 25.0
-                        ),
+                        Icon(Icons.check_box, color: deepGreen, size: 25.0),
                         Text('TODO',
                             style: TextStyle(
                               fontFamily: 'Inter-Regular',
@@ -125,30 +116,43 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                            Container(
-                              margin: const EdgeInsets.all(10.0),
-                              padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
-                              decoration: BoxDecoration(
-                                  border:
-                                  Border.all(color: deepGreen, width: 3),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(15.0)),),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                  itemCount: todoData.getNum(),
-                                  itemBuilder: (context, index){
-                                    return CheckboxListTile(
-                                        title: Text('${todoData.getContent(index)}'),
+                  Container(
+                    margin: const EdgeInsets.all(7.0),
+                    padding: const EdgeInsets.all(5),
+                    height: 200,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: deepGreen, width: 3),
+                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: todoData.getNum(),
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                  title: Text('${todoData.getContent(index)}'),
+                                  leading: Theme(
+                                    data: ThemeData(
+                                        unselectedWidgetColor: deepGreen),
+                                    child: Checkbox(
                                         checkColor: deepGreen,
-                                        controlAffinity: ListTileControlAffinity.leading,
                                         value: false,
-                                        onChanged: (bool? value){
-                                          timeDilation = value! ? 1.0 : 5.0;
+                                        onChanged: (bool? value) {
                                           _deleteTodo(todoData.TodoDB[index]);
-                                        });
-                              }
-                              ),
-                            )
+                                        }),
+                                  ));
+                            },
+                          ),
+                        ),
+                        Text(
+                          'Tap to add',
+                          style: TextStyle(color: deepGreen),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -163,22 +167,28 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-  void dispose(){
+  void dispose() {
     inputString.dispose();
     super.dispose();
   }
 
-  void _addTodo(Todo todo){
+  void makePercentAndPointCorrect() {
+    if (percent > 100) percent = 100;
+    if (userPoint > 200) userPoint = 200;
+  }
+
+  void _addTodo(Todo todo) {
     setState(() {
       todoData.addTodo(todo);
     });
   }
 
-  void _deleteTodo(Todo todo){
+  void _deleteTodo(Todo todo) {
     setState(() {
       todoData.deleteTodo(todo);
       userPoint += todo.todoPoint;
       percent = userPoint / 2;
+      makePercentAndPointCorrect();
       imageNum = (percent ~/ 20 + 1) * 20;
     });
   }
@@ -192,73 +202,51 @@ class _HomeState extends State<Home> {
               child: AlertDialog(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: deepGreen, width: 3)
-                ),
+                    side: BorderSide(color: deepGreen, width: 3)),
                 //Dialog Main Title
-                title: Text("TODO", style: TextStyle(
-                  fontFamily: 'Inter-Regular',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                )),
-
-                content: Container(
-                    width: double.minPositive,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: todoData.getNum(),
-                        itemBuilder: (context, index){
-                          return CheckboxListTile(
-                              title: Text('${todoData.getContent(index)}'),
-                              checkColor: deepGreen,
-                              controlAffinity: ListTileControlAffinity.leading,
-                              value: false,
-                              onChanged: (bool? value){
-                                timeDilation = value! ? 1.0 : 5.0;
-                                _deleteTodo(todoData.TodoDB[index]);
-                              });
-                        }
-                    )
-                ),
+                title: Row(children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5.0),
+                    child: Icon(Icons.add_box, color: deepGreen),
+                  ),
+                  Text("Add todo",
+                      style: TextStyle(
+                        fontFamily: 'Inter-Regular',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ]),
 
                 actions: <Widget>[
                   TextField(
-                  controller: inputString,
-                  textInputAction: TextInputAction.go,
-                  onSubmitted: (value) {
-                    Todo newTodo = Todo(inputString.text, false, DateTime.now(), 15);
-                    _addTodo(newTodo);
-                    inputString.clear();
-                  },
-                  showCursor: false,
-
-                  style: TextStyle(
-                      fontFamily: 'Inter-Regular',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none)
-                    ),
-                    hintText: 'Add a task...',
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Inter-Regular',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    filled: true,
-                    fillColor: grey,
-                  )
+                      controller: inputString,
+                      textInputAction: TextInputAction.go,
+                      onSubmitted: (value) {
+                        Todo newTodo =
+                            Todo(inputString.text, false, DateTime.now(), 50);
+                        _addTodo(newTodo);
+                        inputString.clear();
+                      },
+                      showCursor: false,
+                      style: TextStyle(
+                          fontFamily: 'Inter-Regular',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none)
+                        ),
+                        filled: true,
+                        fillColor: grey,
+                      )
+                  ),
+                ],
               ),
-                  ],
-
             ),
-          ),
           );
         });
   }
