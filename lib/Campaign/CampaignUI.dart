@@ -29,7 +29,7 @@ class CampaignUI extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/grandcanyon.jpg'),
+            image: AssetImage('images/grandcanyon.jpg'),
             fit: BoxFit.none,
           ),
           borderRadius: BorderRadius.circular(15.0),
