@@ -1,79 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'CampaignData.dart';
 import 'CampaignUI.dart';
-import 'package:campaign/CampaignData.dart';
 
-void main() {
-  runApp(const Campaign());
-}
 
 CampaignData campaignData = CampaignData();
 
-class Campaign extends StatelessWidget {
-  const Campaign({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CampaignMain(),
-    );
-  }
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Navigation Bar',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          body: TabBarView(
-            children: [
-              Text('1'),
-              CampaignMain(),
-              Text('3'),
-              Text('4'),
-            ],
-          ),
-          bottomNavigationBar: Container(
-            child: TabBar(
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorWeight: 2,
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.adb),
-                  text: 'one',
-                ),
-                Tab(
-                  icon: Icon(Icons.adb),
-                  text: 'Campaign',
-                ),
-                Tab(
-                  icon: Icon(Icons.adb),
-                  text: 'three',
-                ),
-                Tab(
-                  icon: Icon(Icons.adb),
-                  text: 'four',
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-  class CampaignMain extends StatelessWidget {
+class CampaignMain extends StatelessWidget {
     const CampaignMain({Key? key}) : super(key: key);
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Campaign/cpmain.dart';
 import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               Home(),
-              Text('2'),
+              CampaignMain(),
               NewsMain(),
               MyTree(),
             ],
@@ -97,7 +98,7 @@ class MyApp2 extends StatefulWidget {
 
 class _MyApp2State extends State<MyApp2> {
   int CurrentIndex = 0;
-  final List<Widget> Pages = [Home(), Text('2'), NewsMain(), MyTree()];
+  final List<Widget> Pages = [Home(), CampaignMain(), NewsMain(), MyTree()];
   void tap(int index) {
     setState(() {
       CurrentIndex = index;
