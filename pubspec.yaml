@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  like_button: ^2.0.4
   cupertino_icons: ^1.0.2
   percent_indicator: ^3.4.0
   google_maps_flutter: ^2.1.1

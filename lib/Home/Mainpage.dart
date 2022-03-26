@@ -149,15 +149,21 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
+  @override
   void initState() {
     inputString.addListener(() {});
     super.initState();
   }
 
+  @override
   void dispose() {
-    inputString.dispose();
+    //inputString.dispose();
     super.dispose();
+  }
+
+  void makePercentAndPointCorrect() {
+    if (percent > 100) percent = 100;
+    if (userPoint > 200) userPoint = 200;
   }
 
   void _addTodo(Todo todo){
@@ -195,41 +201,36 @@ class _HomeState extends State<Home> {
 
                 actions: <Widget>[
                   TextField(
-                  controller: inputString,
-                  textInputAction: TextInputAction.go,
-                  onSubmitted: (value) {
-                    Todo newTodo = Todo(inputString.text, false, DateTime.now(), 15);
-                    _addTodo(newTodo);
-                    inputString.clear();
-                  },
-                  showCursor: false,
-
-                  style: TextStyle(
-                      fontFamily: 'Inter-Regular',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(
-                            width: 0,
-                            style: BorderStyle.none)
-                    ),
-                    hintText: 'Add a task...',
-                    hintStyle: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Inter-Regular',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    filled: true,
-                    fillColor: grey,
-                  )
+                      controller: inputString,
+                      textInputAction: TextInputAction.go,
+                      onSubmitted: (value) {
+                        Todo newTodo =
+                            Todo(inputString.text, false, DateTime.now(), 50);
+                        _addTodo(newTodo);
+                        inputString.clear();
+                      },
+                      showCursor: false,
+                      style: TextStyle(
+                          fontFamily: 'Inter-Regular',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none)
+                        ),
+                        filled: true,
+                        fillColor: grey,
+                      )
+                  ),
+                ],
               ),
             ),
           );
         });
   }
 }
+
