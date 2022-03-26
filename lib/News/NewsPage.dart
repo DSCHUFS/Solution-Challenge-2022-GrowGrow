@@ -78,6 +78,11 @@ class NewsMain extends StatelessWidget {
                 writer: snapshot.data!.docs[index]['Writer'],
                 tag1: snapshot.data!.docs[index]['Tag1'],
                 tag2: snapshot.data!.docs[index]['Tag2'],
+                report:snapshot.data!.docs[index]['Report'],
+                answer: snapshot.data!.docs[index]['TestAnser'],
+                question: snapshot.data!.docs[index]['TestQuestion'],
+                type: snapshot.data!.docs[index]['TestType'],
+                getpoint: snapshot.data!.docs[index]['QuestPoint'],
               ),
             ),
           );

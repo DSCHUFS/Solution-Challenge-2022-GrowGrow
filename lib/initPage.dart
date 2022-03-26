@@ -7,7 +7,7 @@ class Init extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Text(';asd'),
+        child: Image.asset('images/icon.png'),
       ),
     );
   }

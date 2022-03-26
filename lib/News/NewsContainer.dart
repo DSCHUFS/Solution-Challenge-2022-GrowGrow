@@ -13,6 +13,11 @@ class NewsContainer extends StatefulWidget {
     required this.writer,
     required this.tag1,
     required this.tag2,
+    required this.report,
+    required this.answer,
+    required this.question,
+    required this.type,
+    required this.getpoint,
   }) : super(key: key);
 
   final int index;
@@ -20,6 +25,12 @@ class NewsContainer extends StatefulWidget {
   final String writer;
   final String tag1;
   final String tag2;
+  final String report;
+
+  final int answer;
+  final String question;
+  final int type;
+  final int getpoint;
 
   @override
   State<NewsContainer> createState() => _NewsContainerState();
@@ -29,13 +40,17 @@ class _NewsContainerState extends State<NewsContainer> {
   @override
   Widget build(BuildContext context) {
     String title = widget.title;
-    //String title = datas[widget.index].Newstitle;
-    //String title = newsData.getTitle(widget.index);
     String subtitle = newsData.getSubtitle(widget.index);
     String writer = widget.writer;
     DateTime time = newsData.getTime(widget.index);
     String tag1 = widget.tag1;
     String tag2 = widget.tag2;
+    //QA
+    String report = widget.report;
+    int answer = widget.answer;
+    String question = widget.question;
+    int type = widget.type;
+    int getpoint = widget.getpoint;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -63,11 +78,18 @@ class _NewsContainerState extends State<NewsContainer> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => NewsReport(
-                            title: title,
-                            subtitle: subtitle,
-                            time: time,
-                            writer: writer)),
+                      builder: (context) => NewsReport(
+                        title: title,
+                        subtitle: subtitle,
+                        time: time,
+                        writer: writer,
+                        report: report,
+                        answer: answer,
+                        question: question,
+                        type: type,
+                        getpoint: getpoint,
+                      ),
+                    ),
                   );
                 },
                 child: Stack(
