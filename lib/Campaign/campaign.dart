@@ -1,21 +1,20 @@
-class Campaign{
-  String campName = '';
-  DateTime campStartDate = DateTime(2022,02,18);
-  DateTime campFinishDate = DateTime(2022,03,18);
-  bool campOfCompany = true;
-  int campLiked = 0;
-  int campScrapped = 0;
-  String campTodo = '';
-  int campPoint = 0;
+class Campaign {
+  int CampaignNum = 0;
+  String CampaignTitle = '';
+  String CampaignLike = '';
+  String CampaignScrap = '';
+  String CampaignImage = '';
+  String CampaignInfo = '';
+  String CampaignDate = '';
 
-Campaign(String name, DateTime startDate, DateTime finishDate, bool ofCompany, int liked, int scrapped, String todo, int point){
-  campName = name;
-  campStartDate = startDate;
-  campFinishDate = finishDate;
-  campOfCompany = ofCompany;
-  campLiked = liked;
-  campScrapped = scrapped;
-  campTodo = todo;
-  campPoint = point;
+
+  Campaign(int campaign_num, String campaigntitle, String like, String scrap, String image, String info, String campaigndate){
+    CampaignNum = campaign_num;
+    CampaignTitle = campaigntitle;
+    CampaignLike = like;
+    CampaignScrap = scrap;
+    CampaignImage = image;
+    CampaignInfo = info;
+    CampaignDate = campaigndate;
   }
 }
