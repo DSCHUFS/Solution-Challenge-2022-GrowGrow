@@ -34,8 +34,8 @@ class LoginTest extends StatelessWidget {
 class HomeTest extends StatelessWidget {
   const HomeTest({Key? key}) : super(key: key);
 
-  void setUser(String? Name){
-   Username = Name;
+  void setUser(String? Name) {
+    Username = Name;
   }
 
   @override
@@ -64,14 +64,13 @@ class LogoutWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          ElevatedButton(onPressed: FirebaseAuth.instance.signOut,
-              child: Text("logout"))
+          ElevatedButton(
+              onPressed: FirebaseAuth.instance.signOut, child: Text("logout"))
         ],
       ),
     );
   }
 }
-
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -86,7 +85,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -101,15 +101,52 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: signInWithGoogle,
-              child: Text('Login'),
-            )
-          ],
+      body: Container(
+        color: Color(0xff8AB39D),
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 200.0, bottom: 10),
+                child: Image(
+                  image: AssetImage('images/Icon.png'),
+                  width: 112,
+                  height: 112,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Grow',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 25),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 150.0),
+                child: ElevatedButton.icon(
+                  onPressed: signInWithGoogle,
+                  label: Text(
+                    'Sign up with Google',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20
+                    ),
+                  ),
+                  icon: Image(
+                    image: AssetImage('images/google.png'),
+                    width: 30,
+                    height: 30,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

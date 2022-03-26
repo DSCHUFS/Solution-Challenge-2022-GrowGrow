@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home/login.dart';
 import 'resources.dart';
 
 class drawer extends StatefulWidget {
@@ -96,6 +97,10 @@ class _drawerState extends State<drawer> {
                 ),
                 title: Text('설정'),
                 onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogoutWidget()),
+                  );
                 },
               ),
             ],

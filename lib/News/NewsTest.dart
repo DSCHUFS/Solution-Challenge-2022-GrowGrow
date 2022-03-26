@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 
 class NewsTest extends StatelessWidget {
-  int TestType = 2;
+  NewsTest({
+    Key? key,
+    required this.answer,
+    required this.question,
+    required this.type,
+    required this.getpoint,
+  }) : super(key: key);
+
+  final int answer;
+  final String question;
+  final int type;
+  final int getpoint;
+
+  //int TestType = type;
   Widget SelectTestType(int type) {
     if (type == 1) {
       return TestOX();
@@ -56,7 +69,7 @@ class NewsTest extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Container(
-              child: SelectTestType(TestType),
+              child: SelectTestType(type),
               margin: EdgeInsets.fromLTRB(25, 2, 25, 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
@@ -78,7 +91,7 @@ class TestOX extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(15.0),
             child: ElevatedButton(
               child: Center(
                 child: Padding(
@@ -105,7 +118,7 @@ class TestOX extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(15.0),
             child: ElevatedButton(
               child: Center(
                 child: Padding(
@@ -147,7 +160,6 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {},
-
               child: Text(
                 '1',
                 style: TextStyle(

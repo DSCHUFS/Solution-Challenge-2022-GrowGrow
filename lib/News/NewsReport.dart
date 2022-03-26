@@ -127,7 +127,12 @@ class NewsReport extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NewsTest()),
+                      MaterialPageRoute(builder: (context) => NewsTest(
+                        getpoint: getpoint,
+                        answer: answer,
+                        question: question,
+                        type: type,
+                      )),
                     );
                   },
                   child: Text(
