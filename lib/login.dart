@@ -48,7 +48,7 @@ class HomeTest extends StatelessWidget {
             return LoginWidget();
           } else {
             setUser(snapshot.data?.displayName);
-            return MyApp();
+            return MyApp2();
           }
         },
       ),
@@ -73,9 +73,14 @@ class LogoutWidget extends StatelessWidget {
 }
 
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
 
+  @override
+  State<LoginWidget> createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

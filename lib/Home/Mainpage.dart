@@ -161,14 +161,14 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
+  @override
   void initState() {
     inputString.addListener(() {});
     super.initState();
   }
-
+  @override
   void dispose() {
-    inputString.dispose();
+    //inputString.dispose();
     super.dispose();
   }
 
@@ -226,6 +226,7 @@ class _HomeState extends State<Home> {
                             Todo(inputString.text, false, DateTime.now(), 50);
                         _addTodo(newTodo);
                         inputString.clear();
+                        //dispose();
                       },
                       showCursor: false,
                       style: TextStyle(
@@ -236,14 +237,11 @@ class _HomeState extends State<Home> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(
-                                width: 0,
-                                style: BorderStyle.none)
-                        ),
+                            borderSide:
+                                BorderSide(width: 0, style: BorderStyle.none)),
                         filled: true,
                         fillColor: grey,
-                      )
-                  ),
+                      )),
                 ],
               ),
             ),
@@ -251,3 +249,4 @@ class _HomeState extends State<Home> {
         });
   }
 }
+
