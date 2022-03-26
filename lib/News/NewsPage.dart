@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:home/News/NewsData.dart';
 import 'package:home/News/NewsReport.dart';
@@ -61,11 +62,26 @@ class NewsMain extends StatelessWidget {
           ),
         ),
       ),
-      body:ListView.builder(
-        itemCount: newsData.getNum(),
-        itemBuilder: (BuildContext context, int index) => NewsContainer(
-          index: index,
-        ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('News').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+          return Container(
+            child: ListView.builder(
+              itemCount: snapshot.data?.docs.length,
+              //itemCount: newsData.getNum(),
+              itemBuilder: (BuildContext context, int index) => NewsContainer(
+                index: index,
+                title: snapshot.data!.docs[index]['Title'],
+                writer: snapshot.data!.docs[index]['Writer'],
+                tag1: snapshot.data!.docs[index]['Tag1'],
+                tag2: snapshot.data!.docs[index]['Tag2'],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

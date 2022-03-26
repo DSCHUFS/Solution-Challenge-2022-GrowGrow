@@ -22,7 +22,7 @@ class _drawerState extends State<drawer> {
                 ),
                 currentAccountPictureSize: Size.square(70),
                 accountEmail: Text('grow@gmail.com', style: TextStyle(color:Colors.black)),
-                accountName: Text('김무럭', style: TextStyle(color:Colors.black)),
+                accountName: Text('$Username', style: TextStyle(color:Colors.black)),
                 decoration: BoxDecoration(
                   color: Color(0xFFFAFAFA),
                 ),

@@ -140,12 +140,6 @@ class _ButtonState extends State<Button> {
                           ),
                         ),
                         onTap: (){
-
-                          setState(() {
-                            userPoint = 0;
-                            percent = userPoint / 2;
-                            imageNum = (percent ~/ 20 + 1) * 20;
-                          });
                           Navigator.push(context, MaterialPageRoute(builder: (context) => MyTree()));
                           },
                       ),

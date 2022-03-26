@@ -5,22 +5,37 @@ import 'package:home/News/NewsTest.dart';
 import 'package:home/News/NewsData.dart';
 import 'package:home/main.dart';
 
-class NewsContainer extends StatelessWidget {
+class NewsContainer extends StatefulWidget {
   NewsContainer({
     Key? key,
     required this.index,
+    required this.title,
+    required this.writer,
+    required this.tag1,
+    required this.tag2,
   }) : super(key: key);
 
   final int index;
+  final String title;
+  final String writer;
+  final String tag1;
+  final String tag2;
 
   @override
+  State<NewsContainer> createState() => _NewsContainerState();
+}
+
+class _NewsContainerState extends State<NewsContainer> {
+  @override
   Widget build(BuildContext context) {
-    String title = newsData.getTitle(index);
-    String subtitle = newsData.getSubtitle(index);
-    String writer = newsData.getWriter(index);
-    DateTime time = newsData.getTime(index);
-    String tag1 = newsData.getTag1(index);
-    String tag2 = newsData.getTag2(index);
+    String title = widget.title;
+    //String title = datas[widget.index].Newstitle;
+    //String title = newsData.getTitle(widget.index);
+    String subtitle = newsData.getSubtitle(widget.index);
+    String writer = widget.writer;
+    DateTime time = newsData.getTime(widget.index);
+    String tag1 = widget.tag1;
+    String tag2 = widget.tag2;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -101,7 +116,7 @@ class NewsContainer extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 10, 8, 3),
+                              padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
                               child: Expanded(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

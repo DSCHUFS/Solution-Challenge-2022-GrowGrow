@@ -3,6 +3,7 @@ import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
 import 'News/NewsPage.dart';
+import 'login.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -22,7 +23,7 @@ class test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      home: LoginTest(),
     );
   }
 }
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
           body: TabBarView(
             children: [
               Home(),
-              Text('Two'),
+              Text('2'),
               NewsMain(),
               MyTree(),
             ],
