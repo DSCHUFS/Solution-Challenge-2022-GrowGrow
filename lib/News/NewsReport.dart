@@ -9,12 +9,23 @@ class NewsReport extends StatelessWidget {
     required this.subtitle,
     required this.time,
     required this.writer,
+    required this.report,
+    required this.answer,
+    required this.question,
+    required this.type,
+    required this.getpoint,
   }) : super(key: key);
 
   final String title;
   final String subtitle;
   final DateTime time;
   final String writer;
+  final String report;
+
+  final int answer;
+  final String question;
+  final int type;
+  final int getpoint;
 
   @override
   Widget build(BuildContext context) {
