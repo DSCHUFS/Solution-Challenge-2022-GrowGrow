@@ -88,6 +88,7 @@ class NewsMain extends StatelessWidget {
                 getpoint: snapshot.data!.docs[index]['QuestPoint'],
                 image: snapshot.data!.docs[index]['Image'],
                 DateString: snapshot.data!.docs[index]['DateString'],
+                test: snapshot.data!.docs[index]['Test']
               ),
             ),
           );

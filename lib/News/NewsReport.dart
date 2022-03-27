@@ -14,6 +14,7 @@ class NewsReport extends StatelessWidget {
     required this.type,
     required this.getpoint,
     required this.image,
+    required this.test,
   }) : super(key: key);
 
   final String title;
@@ -26,6 +27,7 @@ class NewsReport extends StatelessWidget {
   final String question;
   final int type;
   final int getpoint;
+  final List<dynamic> test;
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +134,7 @@ class NewsReport extends StatelessWidget {
                         answer: answer,
                         question: question,
                         type: type,
+                        test: test,
                       )),
                     );
                   },

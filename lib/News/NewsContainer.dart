@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:home/News/NewsReport.dart';
@@ -20,6 +22,7 @@ class NewsContainer extends StatefulWidget {
     required this.getpoint,
     required this.image,
     required this.DateString,
+    required this.test,
   }) : super(key: key);
 
   final int index;
@@ -35,6 +38,7 @@ class NewsContainer extends StatefulWidget {
   final String question;
   final int type;
   final int getpoint;
+  final List<dynamic> test;
 
   @override
   State<NewsContainer> createState() => _NewsContainerState();
@@ -62,6 +66,7 @@ class _NewsContainerState extends State<NewsContainer> {
     String question = widget.question;
     int type = widget.type;
     int getpoint = widget.getpoint;
+    List<dynamic> test = widget.test;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -99,6 +104,7 @@ class _NewsContainerState extends State<NewsContainer> {
                         type: type,
                         getpoint: getpoint,
                         image: image,
+                        test: test,
                       ),
                     ),
                   );
