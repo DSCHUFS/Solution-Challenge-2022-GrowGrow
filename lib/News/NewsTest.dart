@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home/main.dart';
 
 class NewsTest extends StatelessWidget {
   NewsTest({
@@ -122,7 +123,8 @@ class TestOX extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _showDialog(context,AnswerCheck(0,correct),getpoint);
+                _showDialog(context, AnswerCheck(0, correct), getpoint);
+                Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
               },
               style: ElevatedButton.styleFrom(
                 side: BorderSide(
@@ -151,7 +153,7 @@ class TestOX extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _showDialog(context,AnswerCheck(1,correct),getpoint);
+                _showDialog(context, AnswerCheck(1, correct), getpoint);
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
@@ -190,7 +192,7 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
-                _showDialog(context,AnswerCheck(1,correct),getpoint);
+                _showDialog(context, AnswerCheck(1, correct), getpoint);
               },
               child: Text(
                 data[0],
@@ -214,7 +216,7 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
-                _showDialog(context,AnswerCheck(2,correct),getpoint);
+                _showDialog(context, AnswerCheck(2, correct), getpoint);
               },
               child: Text(
                 data[1],
@@ -238,7 +240,7 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
-                _showDialog(context,AnswerCheck(3,correct),getpoint);
+                _showDialog(context, AnswerCheck(3, correct), getpoint);
               },
               child: Text(
                 data[2],
@@ -262,7 +264,7 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
-                _showDialog(context,AnswerCheck(4,correct),getpoint);
+                _showDialog(context, AnswerCheck(4, correct), getpoint);
               },
               child: Text(
                 data[3],
@@ -308,7 +310,7 @@ int AnswerCheck(int Answer, int correct) {
 }
 
 void _showDialog(BuildContext context, int answerCheck, int Point) {
-  if (answerCheck == 1){
+  if (answerCheck == 1) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -317,33 +319,52 @@ void _showDialog(BuildContext context, int answerCheck, int Point) {
           title: new Text("True"),
           content: new Text("Correct"),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text("Get Point"),
+            ElevatedButton(
+              child: Text("Get Point"),
               onPressed: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp2()),
+                );
               },
             ),
           ],
         );
       },
     );
-  }
-  else{
+  } else {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: 1), () {
+          Navigator.pop(context);
+          Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
+        });
         // return object of type Dialog
         return AlertDialog(
           title: new Text("False"),
           content: new Text("Try Again"),
+          /*
           actions: <Widget>[
-            new FlatButton(
-              child: new Text("Close"),
+            ElevatedButton(
+              child: Text("Close"),
+              style: ElevatedButton.styleFrom(
+                side: BorderSide(
+                  color: Color(0xff41B06B),
+                  width: 3.0,
+                ),
+              ),
               onPressed: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp2()),
+                );
               },
             ),
           ],
+          */
         );
       },
     );
