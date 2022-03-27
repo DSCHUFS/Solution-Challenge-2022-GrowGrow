@@ -94,9 +94,9 @@ class _TreeListState extends State<TreeList> {
         return Container(
           child: ListView.builder(
             itemCount: snapshot.data?.docs.length,
-            //itemCount: newsData.getNum(),
+//itemCount: newsData.getNum(),
             itemBuilder: (BuildContext context, int index) => MyTreeContainer(
-              //index: index,
+//index: index,
               usernum: snapshot.data!.docs[index]['UserNum'],
               location : snapshot.data!.docs[index]['Location'],
               date : snapshot.data!.docs[index]['Date'],
