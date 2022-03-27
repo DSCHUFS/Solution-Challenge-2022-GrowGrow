@@ -134,7 +134,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: ElevatedButton.icon(
                   onPressed: signInWithGoogle,
                   label: Text(
-                    'Sign up with Google',
+                    'Sign in with Google',
                     style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                   icon: Image(

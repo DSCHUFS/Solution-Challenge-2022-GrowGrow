@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:home/Home/printImage.dart';
 import 'package:home/login.dart';
@@ -105,11 +106,14 @@ class _drawerState extends State<drawer> {
                 leading: Icon(
                   Icons.settings
                 ),
-                title: Text('설정'),
+                title: Text('Logout'),
                 onTap: () {
+                  //FirebaseAuth.instance.signOut;
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LogoutWidget()),
+
                   );
                 },
               ),

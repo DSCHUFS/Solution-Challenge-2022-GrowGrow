@@ -49,6 +49,7 @@ class CampaignUI extends StatelessWidget {
                   scrap: scrap,
                   info: info,
                   campaigndate: date,
+                  cpimage: image,
                 )
             ),
           );

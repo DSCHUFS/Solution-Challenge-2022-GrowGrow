@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class CampaignInfo extends StatelessWidget {
   const CampaignInfo({
     Key? key,
@@ -10,6 +9,7 @@ class CampaignInfo extends StatelessWidget {
     required this.scrap,
     required this.info,
     required this.campaigndate,
+    required this.cpimage,
   }) : super(key: key);
 
   final String campaigntitle;
@@ -17,6 +17,14 @@ class CampaignInfo extends StatelessWidget {
   final int scrap;
   final String info;
   final String campaigndate;
+  final String cpimage;
+
+  ImageProvider<Object> imagecheck() {
+    if (cpimage == 'null')
+      return AssetImage('images/grandcanyon.jpg');
+    else
+      return NetworkImage(cpimage);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,7 @@ class CampaignInfo extends StatelessWidget {
             style: TextStyle(
                 color: Color(0xff615E5C),
                 fontWeight: FontWeight.bold,
-                fontSize: 30),
+                fontSize: 25),
           ),
         ),
         body: Padding(
@@ -47,85 +55,94 @@ class CampaignInfo extends StatelessWidget {
               ),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    height: 260,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/grandcanyon.jpg'),
-                        fit: BoxFit.fitWidth,
-                    ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                  child: Text(
+                    campaigntitle,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
                   ),
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              campaigntitle,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 10, 0, 0),
+                  child: Text(
+                    campaigndate,
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView(
+                      children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          height: 260,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: imagecheck(),
+                              fit: BoxFit.none,
                             ),
-                    ]
-                        )
-                      ),
-                    Padding(padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: const [
-                          Text(
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                          child: Text(
                             'Info.',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.fromLTRB(5, 2, 0, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                             campaigndate,
-                            style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 25,
-                                fontWeight: FontWeight.bold
-                            ),
+                                fontWeight: FontWeight.bold),
                           ),
-                        ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                          child: Text(
+                            info,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      side: BorderSide(
+                        color: Color(0xff41B06B),
+                        width: 3.0,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      primary: Colors.white,
+                    ),
+                    onPressed: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-
-                    Padding(
-                     padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                       child: Column(
-                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                       crossAxisAlignment: CrossAxisAlignment.center,
-                       children: [
-                          Text(
-                          info,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.normal),
-                          )
-                            ],
-                      )
-                    )
-                          ]),
-                        ),
-                      )
-    );
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ));
   }
 }
