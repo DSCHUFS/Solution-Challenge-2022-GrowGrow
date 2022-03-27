@@ -61,7 +61,7 @@ class NewsTest extends StatelessWidget {
                 child: Text(
                   '$question',
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -123,8 +123,8 @@ class TestOX extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+                Navigator.pop(context);
                 _showDialog(context, AnswerCheck(0, correct), getpoint);
-                Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
               },
               style: ElevatedButton.styleFrom(
                 side: BorderSide(
@@ -153,7 +153,9 @@ class TestOX extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+
                 _showDialog(context, AnswerCheck(1, correct), getpoint);
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
@@ -192,12 +194,14 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.pop(context);
                 _showDialog(context, AnswerCheck(1, correct), getpoint);
               },
               child: Text(
                 data[0],
                 style: TextStyle(
                   color: Colors.black,
+                  fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -216,12 +220,14 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.pop(context);
                 _showDialog(context, AnswerCheck(2, correct), getpoint);
               },
               child: Text(
                 data[1],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -240,12 +246,14 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.pop(context);
                 _showDialog(context, AnswerCheck(3, correct), getpoint);
               },
               child: Text(
                 data[2],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -264,12 +272,14 @@ class TestSelect extends StatelessWidget {
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
               onPressed: () {
+                Navigator.pop(context);
                 _showDialog(context, AnswerCheck(4, correct), getpoint);
               },
               child: Text(
                 data[3],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -314,22 +324,31 @@ void _showDialog(BuildContext context, int answerCheck, int Point) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: 5), () {
+          Navigator.pop(context);
+          //Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
+        });
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("True"),
-          content: new Text("Correct"),
+          title: Text("True"),
+          content: Text("Excellent!!\nGet $Point Point"),
+          /*
           actions: <Widget>[
             ElevatedButton(
               child: Text("Get Point"),
               onPressed: () {
+                /*
                 Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => MyApp2()),
                 );
+
+                 */
               },
             ),
           ],
+           */
         );
       },
     );
@@ -337,14 +356,14 @@ void _showDialog(BuildContext context, int answerCheck, int Point) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        Future.delayed(Duration(seconds: 1), () {
+        Future.delayed(Duration(seconds: 2), () {
           Navigator.pop(context);
-          Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
+          //Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
         });
         // return object of type Dialog
         return AlertDialog(
           title: new Text("False"),
-          content: new Text("Try Again"),
+          content: new Text("Think Again"),
           /*
           actions: <Widget>[
             ElevatedButton(

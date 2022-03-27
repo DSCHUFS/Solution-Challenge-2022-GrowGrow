@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../resources.dart';
@@ -19,15 +20,27 @@ class CampaignMain extends StatelessWidget {
     elevation: 0.0,
     backgroundColor: Colors.white,
     ),
-      body:ListView.builder(
-        itemCount: campaignData.getCampaignNum(),
-        itemBuilder: (BuildContext context, int index) => CampaignUI(
-          campaigntitle: campaignData.getCampaignTitle(index),
-          like: campaignData.getLike(index),
-          scrap: campaignData.getScrap(index),
-          info: campaignData.getInfo(index),
-        ),
-      )
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('Campaign').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+          return Container(
+            child: ListView.builder(
+              itemCount: snapshot.data?.docs.length,
+              itemBuilder: (BuildContext context, int index) => CampaignUI(
+                campaigntitle: snapshot.data!.docs[index]['Title'],
+                like: snapshot.data!.docs[index]['Like'],
+                scrap: snapshot.data!.docs[index]['Scrap'],
+                info: snapshot.data!.docs[index]['Info'],
+                image: snapshot.data!.docs[index]['Image'],
+                date: snapshot.data!.docs[index]['Date']
+              ),
+            )
+          );
+        },
+      ),
     );
   }
 }

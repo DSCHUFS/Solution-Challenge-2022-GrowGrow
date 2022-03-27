@@ -13,8 +13,8 @@ class CampaignInfo extends StatelessWidget {
   }) : super(key: key);
 
   final String campaigntitle;
-  final String like;
-  final String scrap;
+  final int like;
+  final int scrap;
   final String info;
   final String campaigndate;
 
@@ -127,8 +127,5 @@ class CampaignInfo extends StatelessWidget {
                         ),
                       )
     );
-
-
   }
-
 }
