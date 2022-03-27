@@ -19,6 +19,7 @@ class NewsMain extends StatelessWidget {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
+        /*
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(65.0),
           child: Row(
@@ -61,6 +62,8 @@ class NewsMain extends StatelessWidget {
             ],
           ),
         ),
+        After Update : Search news
+        */
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('News').snapshots(),
@@ -83,6 +86,8 @@ class NewsMain extends StatelessWidget {
                 question: snapshot.data!.docs[index]['TestQuestion'],
                 type: snapshot.data!.docs[index]['TestType'],
                 getpoint: snapshot.data!.docs[index]['QuestPoint'],
+                image: snapshot.data!.docs[index]['Image'],
+                DateString: snapshot.data!.docs[index]['DateString'],
               ),
             ),
           );

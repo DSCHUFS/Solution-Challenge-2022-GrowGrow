@@ -18,6 +18,8 @@ class NewsContainer extends StatefulWidget {
     required this.question,
     required this.type,
     required this.getpoint,
+    required this.image,
+    required this.DateString,
   }) : super(key: key);
 
   final int index;
@@ -26,6 +28,8 @@ class NewsContainer extends StatefulWidget {
   final String tag1;
   final String tag2;
   final String report;
+  final String image;
+  final String DateString;
 
   final int answer;
   final String question;
@@ -37,14 +41,21 @@ class NewsContainer extends StatefulWidget {
 }
 
 class _NewsContainerState extends State<NewsContainer> {
+  ImageProvider<Object> imagecheck(){
+    if (widget.image == 'null')
+      return  AssetImage('images/tree.png');
+    else
+      return NetworkImage(widget.image);
+  }
   @override
   Widget build(BuildContext context) {
     String title = widget.title;
-    String subtitle = newsData.getSubtitle(widget.index);
     String writer = widget.writer;
     DateTime time = newsData.getTime(widget.index);
     String tag1 = widget.tag1;
     String tag2 = widget.tag2;
+    String image = widget.image;
+    String DateString = widget.DateString;
     //QA
     String report = widget.report;
     int answer = widget.answer;
@@ -80,14 +91,14 @@ class _NewsContainerState extends State<NewsContainer> {
                     MaterialPageRoute(
                       builder: (context) => NewsReport(
                         title: title,
-                        subtitle: subtitle,
-                        time: time,
+                        time: DateString,
                         writer: writer,
                         report: report,
                         answer: answer,
                         question: question,
                         type: type,
                         getpoint: getpoint,
+                        image: image,
                       ),
                     ),
                   );
@@ -99,14 +110,14 @@ class _NewsContainerState extends State<NewsContainer> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.0),
                           image: DecorationImage(
-                            image: AssetImage('images/tree.png'),
-                            fit: BoxFit.fitWidth,
+                            image: imagecheck(),
+                            fit: BoxFit.fill,
                           )),
                     ),
                     Positioned(
                       top: 130,
                       child: Container(
-                        height: 100,
+                        height: 85,
                         width: 1000,
                         color: Colors.black45,
                         child: Column(
@@ -127,18 +138,7 @@ class _NewsContainerState extends State<NewsContainer> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 1, 8, 4),
-                              child: Expanded(
-                                child: Text(
-                                  subtitle,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
+                              padding: const EdgeInsets.fromLTRB(8, 15, 8, 0),
                               child: Expanded(
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -147,7 +147,8 @@ class _NewsContainerState extends State<NewsContainer> {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10),
                                       child: Text(
-                                        DateFormat("yyyy-MM-dd").format(time),
+                                        //DateFormat("yyyy-MM-dd").format(time),
+                                        (DateString),
                                         style: TextStyle(
                                           color: Colors.white,
                                         ),

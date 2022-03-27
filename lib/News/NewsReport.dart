@@ -6,7 +6,6 @@ class NewsReport extends StatelessWidget {
   const NewsReport({
     Key? key,
     required this.title,
-    required this.subtitle,
     required this.time,
     required this.writer,
     required this.report,
@@ -14,13 +13,14 @@ class NewsReport extends StatelessWidget {
     required this.question,
     required this.type,
     required this.getpoint,
+    required this.image,
   }) : super(key: key);
 
   final String title;
-  final String subtitle;
-  final DateTime time;
+  final String time;
   final String writer;
   final String report;
+  final String image;
 
   final int answer;
   final String question;
@@ -59,7 +59,7 @@ class NewsReport extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.only(top: 15),
-                height: 70,
+                //height: 100,
                 color: Color(0xff41B06B),
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -74,13 +74,6 @@ class NewsReport extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        '$subtitle',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -94,7 +87,8 @@ class NewsReport extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Text(
-                              DateFormat("yyyy-MM-dd").format(time),
+                              (time),
+                              //DateFormat("yyyy-MM-dd").format(time),
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 10,
@@ -114,8 +108,14 @@ class NewsReport extends StatelessWidget {
                     color: Colors.white,
                     child: ListView(
                       children: <Widget>[
-                        Text('사진'),
-                        Text('$report'),
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Image.network(image),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:15.0),
+                          child: Text(report),
+                        ),
                       ],
                     ),
                   ),
@@ -136,7 +136,7 @@ class NewsReport extends StatelessWidget {
                     );
                   },
                   child: Text(
-                    'asd',
+                    'News Quiz',
                     style: TextStyle(
                       color: Colors.black,
                     ),
