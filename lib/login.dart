@@ -34,8 +34,10 @@ class LoginTest extends StatelessWidget {
 class HomeTest extends StatelessWidget {
   const HomeTest({Key? key}) : super(key: key);
 
-  void setUser(String? Name) {
-    Username = Name;
+  void setUser(String? userName, String? userImage, String? userEmail) {
+    Username = userName;
+    Email = userEmail;
+    Url = userImage;
   }
 
   @override
@@ -47,7 +49,8 @@ class HomeTest extends StatelessWidget {
           if (!snapshot.hasData) {
             return LoginWidget();
           } else {
-            setUser(snapshot.data?.displayName);
+            setUser(snapshot.data?.displayName,snapshot.data?.photoURL ,snapshot.data?.email);
+            print(Url);
             return MyApp2();
           }
         },
@@ -65,7 +68,9 @@ class LogoutWidget extends StatelessWidget {
       child: Column(
         children: [
           ElevatedButton(
-              onPressed: FirebaseAuth.instance.signOut, child: Text("logout"))
+            onPressed: FirebaseAuth.instance.signOut,
+            child: Text("logout"),
+          )
         ],
       ),
     );
@@ -130,10 +135,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   onPressed: signInWithGoogle,
                   label: Text(
                     'Sign up with Google',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20
-                    ),
+                    style: TextStyle(color: Colors.black, fontSize: 20),
                   ),
                   icon: Image(
                     image: AssetImage('images/google.png'),

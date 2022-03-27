@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../resources.dart';
 import 'CampaignData.dart';
 import 'CampaignUI.dart';
 
@@ -13,23 +14,11 @@ class CampaignMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Campaign',
-          style: TextStyle(
-              color: Color(0xff615E5C),
-              fontWeight: FontWeight.bold,
-              fontSize: 30
-          ),
-      ),
-      backgroundColor: Colors.white24,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(Icons.account_circle),
-          color: Colors.lightBlue,
-          iconSize: 40,
-          onPressed: (){},
-        ),
-      ),
+        title: Text('Campaign', style: TextStyle(color: darkGrey,fontSize: 25,)),
+    centerTitle: true,
+    elevation: 0.0,
+    backgroundColor: Colors.white,
+    ),
       body:ListView.builder(
         itemCount: campaignData.getCampaignNum(),
         itemBuilder: (BuildContext context, int index) => CampaignUI(

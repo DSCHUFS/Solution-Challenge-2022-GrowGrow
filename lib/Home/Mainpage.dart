@@ -18,13 +18,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  ImageProvider<Object> getimage(){
+    if (Url == 'null'){
+      return AssetImage('images/account.png');
+    }
+    else{
+      return NetworkImage(Url!);
+      //return AssetImage('images/account.png');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: drawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: darkGrey)),
+        title: Text('Home', style: TextStyle(color: darkGrey,fontSize: 25)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -36,7 +45,7 @@ class _HomeState extends State<Home> {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/account.png'),
+                    image: getimage(),
                   ),
                   border: Border.all(color: deepGreen, width: 1),
                   shape: BoxShape.circle,

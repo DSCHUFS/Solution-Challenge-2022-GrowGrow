@@ -39,7 +39,7 @@ class NewsTest extends StatelessWidget {
           style: TextStyle(
               color: Color(0xff615E5C),
               fontWeight: FontWeight.bold,
-              fontSize: 30),
+              fontSize: 25),
         ),
       ),
       body: Column(
@@ -49,7 +49,7 @@ class NewsTest extends StatelessWidget {
             child: Container(
               child: Center(
                 child: Text(
-                  '문제',
+                  '$question',
                   style: TextStyle(
                     fontSize: 50,
                   ),

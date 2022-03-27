@@ -15,7 +15,7 @@ class NewsMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News', style: TextStyle(color: darkGrey)),
+        title: Text('News', style: TextStyle(color: darkGrey,fontSize: 25)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,

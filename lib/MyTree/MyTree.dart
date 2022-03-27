@@ -25,18 +25,10 @@ class _MyTreeState extends State<MyTree> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('MyTree', style: TextStyle(color: darkGrey)),
+          title: Text('MyTree', style: TextStyle(color: darkGrey,fontSize: 25)),
           centerTitle: true,
           elevation: 0.0,
           backgroundColor: Colors.white,
-          leading: Builder(builder: (context){
-            return Padding(
-              padding: const EdgeInsets.all(11.0),
-              child: GestureDetector(
-                onTap: () => Scaffold.of(context).openDrawer(),
-              ),
-            );
-          }),
         ),
         body: Column(
           children: [

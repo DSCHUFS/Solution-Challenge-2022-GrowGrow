@@ -15,3 +15,5 @@ late num percent = userPoint / 2;
 late int imageNum = (percent ~/ 20 + 1) * 20;
 TextEditingController inputString = TextEditingController();
 String? Username = 'test';
+String? Email = 'test@gmail.com';
+String? Url = 'null';

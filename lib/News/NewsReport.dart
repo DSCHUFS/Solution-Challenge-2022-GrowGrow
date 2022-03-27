@@ -41,7 +41,7 @@ class NewsReport extends StatelessWidget {
           style: TextStyle(
               color: Color(0xff615E5C),
               fontWeight: FontWeight.bold,
-              fontSize: 30),
+              fontSize: 25),
         ),
       ),
       body: Padding(
@@ -114,8 +114,8 @@ class NewsReport extends StatelessWidget {
                     color: Colors.white,
                     child: ListView(
                       children: <Widget>[
-                        Text('기사'),
                         Text('사진'),
+                        Text('$report'),
                       ],
                     ),
                   ),

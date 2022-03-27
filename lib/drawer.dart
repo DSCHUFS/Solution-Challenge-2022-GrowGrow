@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home/Home/printImage.dart';
 import 'package:home/login.dart';
 import 'resources.dart';
 
@@ -10,6 +11,15 @@ class drawer extends StatefulWidget {
 }
 
 class _drawerState extends State<drawer> {
+  ImageProvider<Object> getimage(){
+    if (Url == 'null'){
+      return AssetImage('images/account.png');
+    }
+    else{
+      return NetworkImage(Url!);
+      //return AssetImage('images/account.png');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -19,10 +29,10 @@ class _drawerState extends State<drawer> {
             children: [
               UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage('images/account.png')
+                  foregroundImage: getimage(),
                 ),
                 currentAccountPictureSize: Size.square(70),
-                accountEmail: Text('grow@gmail.com', style: TextStyle(color:Colors.black)),
+                accountEmail: Text('$Email', style: TextStyle(color:Colors.black)),
                 accountName: Text('$Username', style: TextStyle(color:Colors.black)),
                 decoration: BoxDecoration(
                   color: Color(0xFFFAFAFA),
