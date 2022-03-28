@@ -62,7 +62,8 @@ class _HomeTestState extends State<HomeTest> {
               "Name" : '${snapshot.data?.displayName}',
               "ProfileImage" : '${snapshot.data?.photoURL}',
               "Email" : '${snapshot.data?.email}',
-            });
+              "Point" : 0
+            },SetOptions(merge: true));
             return MyApp2();
           }
         },
@@ -114,16 +115,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
 
-
   }
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  void setUser(){
-    firestore.collection('User_test').doc('test').set({
-      "Name" : 'Test'
-
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
