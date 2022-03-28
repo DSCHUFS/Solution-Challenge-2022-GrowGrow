@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,16 +18,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  ImageProvider<Object> getimage() {
-    if (Url == 'null') {
+  ImageProvider<Object> getimage(){
+    if (Url == 'null'){
       return AssetImage('images/account.png');
-    } else {
+    }
+    else{
       return NetworkImage(Url!);
       //return AssetImage('images/account.png');
     }
   }
 
-  Todo passTodo = Todo('', false, DateTime(2022, 05, 21), 0, false);
+  Todo passTodo = Todo('', false, DateTime(2022,05,21), 0, false);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class _HomeState extends State<Home> {
       drawer: drawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: darkGrey, fontSize: 25)),
+        title: Text('Home', style: TextStyle(color: darkGrey,fontSize: 25)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
@@ -107,7 +106,8 @@ class _HomeState extends State<Home> {
             ),
           ),
           GestureDetector(
-            onTap: () {
+            onTap: ()
+            {
               AddTodoDialog();
             },
             child: Padding(
@@ -129,67 +129,35 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-<<<<<<< Updated upstream
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.20,
-                              margin: const EdgeInsets.all(10.0),
-                              padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
-                              decoration: BoxDecoration(
-                                  border:
-                                  Border.all(color: deepGreen, width: 3),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(15.0)),),
-                              child: ListView.builder(
-                                        shrinkWrap: true,
-                                          itemCount: todoData.getNum(),
-                                          itemBuilder: (context, index){
-                                            return ListTile(
-                                                title: Text('${todoData.getContent(index)}'),
-                                                leading: Theme(
-                                                  data: ThemeData(unselectedWidgetColor: deepGreen),
-                                                  child: Checkbox(
-                                                      value: false,
-                                                      onChanged: (bool? value){
-                                                        _deleteTodo(todoData.TodoDB[index]);
-                                                      }),
-                                                )
-                                            );
-                                }
-                              ),
-                            ),
-                  Text('Tap to add',
-                  style: TextStyle(color: deepGreen),)
-=======
                   Container(
-                    height: 200,
+                    height: MediaQuery.of(context).size.height * 0.20,
                     margin: const EdgeInsets.all(10.0),
                     padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                     decoration: BoxDecoration(
-                      border: Border.all(color: deepGreen, width: 3),
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                    ),
+                      border:
+                      Border.all(color: deepGreen, width: 3),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(15.0)),),
                     child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: todoData.getNum(),
-                        itemBuilder: (context, index) {
+                        itemBuilder: (context, index){
                           return ListTile(
                               title: Text('${todoData.getContent(index)}'),
                               leading: Theme(
-                                data:
-                                    ThemeData(unselectedWidgetColor: deepGreen),
+                                data: ThemeData(unselectedWidgetColor: deepGreen),
                                 child: Checkbox(
                                     value: false,
-                                    onChanged: (bool? value) {
+                                    onChanged: (bool? value){
                                       _deleteTodo(todoData.TodoDB[index]);
                                     }),
-                              ));
-                        }),
+                              )
+                          );
+                        }
+                    ),
                   ),
-                  Text(
-                    'Tap to add',
-                    style: TextStyle(color: deepGreen),
-                  )
->>>>>>> Stashed changes
+                  Text('Tap to add',
+                    style: TextStyle(color: deepGreen),)
                 ],
               ),
             ),
@@ -198,7 +166,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
   @override
   void initState() {
     inputString.addListener(() {});
@@ -216,17 +183,11 @@ class _HomeState extends State<Home> {
     if (userPoint > 200) userPoint = 200;
   }
 
-  void _addTodo(Todo todo) {
+  void _addTodo(Todo todo){
     setState(() {
       todoData.addTodo(todo);
     });
-<<<<<<< Updated upstream
     FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([todo.todoContent])});
-=======
-    FirebaseFirestore.instance.collection('User').doc('$Email').update({
-      'array': FieldValue.arrayUnion([todo.todoContent])
-    });
->>>>>>> Stashed changes
   }
 
   void _deleteTodo(Todo todo) {
@@ -251,25 +212,28 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(10.0),
                     side: BorderSide(color: deepGreen, width: 3)),
                 //Dialog Main Title
-                title: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5.0),
-                    child: Icon(Icons.add_box, color: deepGreen),
-                  ),
-                  Text("Add todo",
-                      style: TextStyle(
+                title: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: Icon(
+                            Icons.add_box,
+                            color: deepGreen),
+                      ),
+                      Text("Add todo", style: TextStyle(
                         fontFamily: 'Inter-Regular',
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       )),
-                ]),
+                    ]
+                ),
                 actions: <Widget>[
                   TextField(
                       controller: inputString,
                       textInputAction: TextInputAction.go,
                       onSubmitted: (value) {
-                        Todo newTodo = Todo(
-                            inputString.text, false, DateTime.now(), 50, false);
+                        Todo newTodo =
+                        Todo(inputString.text, false, DateTime.now(), 50, false);
                         _addTodo(newTodo);
                         inputString.clear();
                       },
@@ -282,11 +246,14 @@ class _HomeState extends State<Home> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(8),
-                            borderSide:
-                                BorderSide(width: 0, style: BorderStyle.none)),
+                            borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none)
+                        ),
                         filled: true,
                         fillColor: grey,
-                      )),
+                      )
+                  ),
                 ],
               ),
             ),
