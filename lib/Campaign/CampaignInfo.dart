@@ -136,8 +136,8 @@ class CampaignInfo extends StatelessWidget {
                       primary: Colors.white,
                     ),
                     onPressed: () {
-                      FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([this.campaigntitle])});
-                      todoData.addTodo(Todo(this.campaigntitle, false, DateTime(2022,5,10), 50, true));
+                      FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([this.todo])});
+                      todoData.addTodo(Todo(this.todo, false, DateTime(2022,5,10), 50, true));
                       },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
