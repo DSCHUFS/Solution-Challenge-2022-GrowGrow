@@ -69,7 +69,10 @@ class NewsMain extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('News').snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(
+                child: CircularProgressIndicator(
+                  color: deepGreen,
+                ));
           }
           return Container(
             child: ListView.builder(

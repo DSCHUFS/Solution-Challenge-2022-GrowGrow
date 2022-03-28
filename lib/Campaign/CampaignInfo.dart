@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -33,7 +34,6 @@ class CampaignInfo extends StatelessWidget {
   }
 
   @override
-
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,6 +138,33 @@ class CampaignInfo extends StatelessWidget {
                     onPressed: () {
                       FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([this.todo])});
                       todoData.addTodo(Todo(this.todo, false, DateTime(2022,5,10), 50, true));
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side: BorderSide(color: deepGreen, width: 3)
+                                ),
+                                title: Column(
+                                  children: <Widget>[
+                                    Text("A todo of the campaign is added!"),
+                                  ],
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text("OK"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    style: TextButton.styleFrom(
+                                      primary: Colors.white,
+                                      backgroundColor: deepGreen
+                                    ),
+                                  ),
+                                ],
+                              );
+                            });
                       },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
@@ -156,4 +183,7 @@ class CampaignInfo extends StatelessWidget {
           ),
         ));
   }
+
+
 }
+
