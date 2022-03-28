@@ -58,7 +58,7 @@ class CampaignInfo extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
-                color: const Color(0xff81dfa4),
+                color: deepGreen,
                 width: 3,
               ),
             ),
@@ -152,14 +152,17 @@ class CampaignInfo extends StatelessWidget {
                                   ],
                                 ),
                                 actions: <Widget>[
-                                  TextButton(
-                                    child: Text("OK"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    style: TextButton.styleFrom(
-                                      primary: Colors.white,
-                                      backgroundColor: deepGreen
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5.0),
+                                    child: TextButton(
+                                      child: Text("OK"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: deepGreen
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -169,7 +172,7 @@ class CampaignInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Text(
-                        'Submit',
+                        'Participate',
                         style: TextStyle(
                           fontSize: 15,
                           color: Colors.black,

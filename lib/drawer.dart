@@ -52,40 +52,35 @@ class _drawerState extends State<drawer> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Row(children: [
+                  Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Image.asset('images/tree_drawer.png', width: 40),
+                    ),
+                    Text('$tree',
+                        style: TextStyle(
+                          fontFamily: 'Inter-Regular',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ))
+                  ]),
+                  Row(
+                    children: [
                       Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Image.asset('images/tree_drawer.png', width: 40),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.control_point_duplicate,
+                          size: 40,
+                        ),
                       ),
-                      Text('20',
+                      Text('$userPoint',
                           style: TextStyle(
                             fontFamily: 'Inter-Regular',
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                           ))
-                    ]),
+                    ],
                   ),
-                  GestureDetector(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.control_point_duplicate,
-                              size: 40,
-                            ),
-                          ),
-                          Text('$userPoint',
-                              style: TextStyle(
-                                fontFamily: 'Inter-Regular',
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ))
-                        ],
-                      )),
                 ],
               ),
             ),
