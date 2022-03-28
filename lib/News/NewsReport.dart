@@ -115,7 +115,7 @@ class NewsReport extends StatelessWidget {
                           child: Image.network(image),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top:15.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Text(report),
                         ),
                       ],
@@ -129,13 +129,14 @@ class NewsReport extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => NewsTest(
-                        getpoint: getpoint,
-                        answer: answer,
-                        question: question,
-                        type: type,
-                        test: test,
-                      )),
+                      MaterialPageRoute(
+                          builder: (context) => NewsTest(
+                                getpoint: getpoint,
+                                answer: answer,
+                                question: question,
+                                type: type,
+                                test: test,
+                              )),
                     );
                   },
                   child: Text(
