@@ -132,6 +132,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                             Container(
+                              height: MediaQuery.of(context).size.height * 0.20,
                               margin: const EdgeInsets.all(10.0),
                               padding: const EdgeInsets.fromLTRB(15, 5, 15, 10),
                               decoration: BoxDecoration(
@@ -188,7 +189,7 @@ class _HomeState extends State<Home> {
     setState(() {
       todoData.addTodo(todo);
     });
-    FirebaseFirestore.instance.collection('User').doc('$Email').update({'array' : FieldValue.arrayUnion([todo.todoContent])});
+    FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([todo.todoContent])});
   }
 
   void _deleteTodo(Todo todo) {
@@ -199,6 +200,7 @@ class _HomeState extends State<Home> {
       makePercentAndPointCorrect();
       imageNum = (percent ~/ 20 + 1) * 20;
     });
+    FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayRemove([todo.todoContent])});
   }
 
   void AddTodoDialog() {
