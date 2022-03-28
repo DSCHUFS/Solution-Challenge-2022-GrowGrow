@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,14 +32,21 @@ class LoginTest extends StatelessWidget {
   }
 }
 
-class HomeTest extends StatelessWidget {
+class HomeTest extends StatefulWidget {
   const HomeTest({Key? key}) : super(key: key);
 
+  @override
+  State<HomeTest> createState() => _HomeTestState();
+}
+
+class _HomeTestState extends State<HomeTest> {
   void setUser(String? userName, String? userImage, String? userEmail) {
     Username = userName;
     Email = userEmail;
     Url = userImage;
   }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +58,11 @@ class HomeTest extends StatelessWidget {
             return LoginWidget();
           } else {
             setUser(snapshot.data?.displayName,snapshot.data?.photoURL ,snapshot.data?.email);
-            print(Url);
+            firestore.collection('User').doc('${snapshot.data?.email}').set({
+              "Name" : '${snapshot.data?.displayName}',
+              "ProfileImage" : '${snapshot.data?.photoURL}',
+              "Email" : '${snapshot.data?.email}',
+            });
             return MyApp2();
           }
         },
@@ -101,6 +113,16 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
+
+
+  }
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  void setUser(){
+    firestore.collection('User_test').doc('test').set({
+      "Name" : 'Test'
+
+    });
   }
 
   @override
@@ -132,7 +154,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               Padding(
                 padding: const EdgeInsets.only(top: 150.0),
                 child: ElevatedButton.icon(
-                  onPressed: signInWithGoogle,
+                  onPressed: (){
+                    //setUser();
+                    signInWithGoogle();
+                  },
                   label: Text(
                     'Sign in with Google',
                     style: TextStyle(color: Colors.black, fontSize: 20),
