@@ -1,12 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:home/main.dart';
 
 class NewsTest extends StatelessWidget {
-  int TestType = 2;
+  NewsTest({
+    Key? key,
+    required this.answer,
+    required this.question,
+    required this.type,
+    required this.getpoint,
+    required this.test,
+  }) : super(key: key);
+
+  final int answer;
+  final String question;
+  final int type;
+  final int getpoint;
+  final List<dynamic> test;
+
+  //int TestType = type;
   Widget SelectTestType(int type) {
     if (type == 1) {
-      return TestOX();
+      return TestOX(
+        correct: this.answer,
+        getpoint: this.getpoint,
+      );
     } else if (type == 2) {
-      return TestSelect();
+      return TestSelect(
+        data: this.test,
+        correct: this.answer,
+        getpoint: this.getpoint,
+      );
     } else {
       return TestError();
     }
@@ -26,7 +49,7 @@ class NewsTest extends StatelessWidget {
           style: TextStyle(
               color: Color(0xff615E5C),
               fontWeight: FontWeight.bold,
-              fontSize: 30),
+              fontSize: 25),
         ),
       ),
       body: Column(
@@ -36,9 +59,9 @@ class NewsTest extends StatelessWidget {
             child: Container(
               child: Center(
                 child: Text(
-                  '문제',
+                  '$question',
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -56,7 +79,7 @@ class NewsTest extends StatelessWidget {
           Expanded(
             flex: 4,
             child: Container(
-              child: SelectTestType(TestType),
+              child: SelectTestType(type),
               margin: EdgeInsets.fromLTRB(25, 2, 25, 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
@@ -70,7 +93,14 @@ class NewsTest extends StatelessWidget {
 }
 
 class TestOX extends StatelessWidget {
-  const TestOX({Key? key}) : super(key: key);
+  const TestOX({
+    Key? key,
+    required this.correct,
+    required this.getpoint,
+  }) : super(key: key);
+
+  final int correct;
+  final int getpoint;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +108,7 @@ class TestOX extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(15.0),
             child: ElevatedButton(
               child: Center(
                 child: Padding(
@@ -92,7 +122,10 @@ class TestOX extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                _showDialog(context, AnswerCheck(0, correct), getpoint);
+              },
               style: ElevatedButton.styleFrom(
                 side: BorderSide(
                   color: Color(0xff41B06B),
@@ -105,7 +138,7 @@ class TestOX extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(15.0),
             child: ElevatedButton(
               child: Center(
                 child: Padding(
@@ -119,7 +152,11 @@ class TestOX extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+
+                _showDialog(context, AnswerCheck(1, correct), getpoint);
+                Navigator.pop(context);
+              },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
                 side: BorderSide(
@@ -136,7 +173,17 @@ class TestOX extends StatelessWidget {
 }
 
 class TestSelect extends StatelessWidget {
-  const TestSelect({Key? key}) : super(key: key);
+  const TestSelect(
+      {Key? key,
+      required this.data,
+      required this.correct,
+      required this.getpoint})
+      : super(key: key);
+
+  final List<dynamic> data;
+  final int correct;
+  final int getpoint;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -146,12 +193,15 @@ class TestSelect extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
-              onPressed: () {},
-
+              onPressed: () {
+                Navigator.pop(context);
+                _showDialog(context, AnswerCheck(1, correct), getpoint);
+              },
               child: Text(
-                '1',
+                data[0],
                 style: TextStyle(
                   color: Colors.black,
+                  fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -169,11 +219,15 @@ class TestSelect extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                _showDialog(context, AnswerCheck(2, correct), getpoint);
+              },
               child: Text(
-                '2',
+                data[1],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -191,11 +245,15 @@ class TestSelect extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                _showDialog(context, AnswerCheck(3, correct), getpoint);
+              },
               child: Text(
-                '3',
+                data[2],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -213,11 +271,15 @@ class TestSelect extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(3.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                _showDialog(context, AnswerCheck(4, correct), getpoint);
+              },
               child: Text(
-                '4',
+                data[3],
                 style: TextStyle(
                   color: Colors.black,
+                    fontSize: 20
                 ),
               ),
               style: ElevatedButton.styleFrom(
@@ -245,6 +307,85 @@ class TestError extends StatelessWidget {
         color: Colors.pinkAccent,
         child: Text('Error'),
       ),
+    );
+  }
+}
+
+//AnswerCheck(,correct)
+int AnswerCheck(int Answer, int correct) {
+  if (Answer == correct)
+    return 1;
+  else
+    return 0;
+}
+
+void _showDialog(BuildContext context, int answerCheck, int Point) {
+  if (answerCheck == 1) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: 5), () {
+          Navigator.pop(context);
+          //Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
+        });
+        // return object of type Dialog
+        return AlertDialog(
+          title: Text("True"),
+          content: Text("Excellent!!\nGet $Point Point"),
+          /*
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text("Get Point"),
+              onPressed: () {
+                /*
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp2()),
+                );
+
+                 */
+              },
+            ),
+          ],
+           */
+        );
+      },
+    );
+  } else {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: 2), () {
+          Navigator.pop(context);
+          //Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp2()),);
+        });
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("False"),
+          content: new Text("Think Again"),
+          /*
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text("Close"),
+              style: ElevatedButton.styleFrom(
+                side: BorderSide(
+                  color: Color(0xff41B06B),
+                  width: 3.0,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp2()),
+                );
+              },
+            ),
+          ],
+          */
+        );
+      },
     );
   }
 }

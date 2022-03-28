@@ -25,18 +25,10 @@ class _MyTreeState extends State<MyTree> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('MyTree', style: TextStyle(color: darkGrey)),
+          title: Text('MyTree', style: TextStyle(color: darkGrey,fontSize: 25)),
           centerTitle: true,
           elevation: 0.0,
           backgroundColor: Colors.white,
-          leading: Builder(builder: (context){
-            return Padding(
-              padding: const EdgeInsets.all(11.0),
-              child: GestureDetector(
-                onTap: () => Scaffold.of(context).openDrawer(),
-              ),
-            );
-          }),
         ),
         body: Column(
           children: [
@@ -102,9 +94,9 @@ class _TreeListState extends State<TreeList> {
         return Container(
           child: ListView.builder(
             itemCount: snapshot.data?.docs.length,
-            //itemCount: newsData.getNum(),
+//itemCount: newsData.getNum(),
             itemBuilder: (BuildContext context, int index) => MyTreeContainer(
-              //index: index,
+//index: index,
               usernum: snapshot.data!.docs[index]['UserNum'],
               location : snapshot.data!.docs[index]['Location'],
               date : snapshot.data!.docs[index]['Date'],

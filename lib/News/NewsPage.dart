@@ -15,10 +15,11 @@ class NewsMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News', style: TextStyle(color: darkGrey)),
+        title: Text('News', style: TextStyle(color: darkGrey,fontSize: 25)),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
+        /*
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(65.0),
           child: Row(
@@ -61,6 +62,8 @@ class NewsMain extends StatelessWidget {
             ],
           ),
         ),
+        After Update : Search news
+        */
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('News').snapshots(),
@@ -79,10 +82,13 @@ class NewsMain extends StatelessWidget {
                 tag1: snapshot.data!.docs[index]['Tag1'],
                 tag2: snapshot.data!.docs[index]['Tag2'],
                 report:snapshot.data!.docs[index]['Report'],
-                answer: snapshot.data!.docs[index]['TestAnser'],
+                answer: snapshot.data!.docs[index]['TestAnswer'],
                 question: snapshot.data!.docs[index]['TestQuestion'],
                 type: snapshot.data!.docs[index]['TestType'],
                 getpoint: snapshot.data!.docs[index]['QuestPoint'],
+                image: snapshot.data!.docs[index]['Image'],
+                DateString: snapshot.data!.docs[index]['DateString'],
+                test: snapshot.data!.docs[index]['Test']
               ),
             ),
           );

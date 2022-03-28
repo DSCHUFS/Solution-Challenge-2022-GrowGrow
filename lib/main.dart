@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:home/initPage.dart';
 import 'Campaign/cpmain.dart';
 import 'Home/Mainpage.dart';
 import 'MyTree/MyTree.dart';
 import 'News/NewsData.dart';
 import 'News/NewsPage.dart';
+import 'Campaign/Campaign.dart';
 import 'login.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -22,7 +24,8 @@ class test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginTest(),
+      //home: LoginTest(),
+      home: Init(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../resources.dart';
 import 'CampaignData.dart';
 import 'CampaignUI.dart';
 
@@ -13,32 +15,32 @@ class CampaignMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Campaign',
-          style: TextStyle(
-              color: Color(0xff615E5C),
-              fontWeight: FontWeight.bold,
-              fontSize: 30
-          ),
+        title: Text('Campaign', style: TextStyle(color: darkGrey,fontSize: 25,)),
+    centerTitle: true,
+    elevation: 0.0,
+    backgroundColor: Colors.white,
+    ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('Campaign').snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
+          return Container(
+            child: ListView.builder(
+              itemCount: snapshot.data?.docs.length,
+              itemBuilder: (BuildContext context, int index) => CampaignUI(
+                campaigntitle: snapshot.data!.docs[index]['Title'],
+                like: snapshot.data!.docs[index]['Like'],
+                scrap: snapshot.data!.docs[index]['Scrap'],
+                info: snapshot.data!.docs[index]['Info'],
+                image: snapshot.data!.docs[index]['Image'],
+                date: snapshot.data!.docs[index]['Date']
+              ),
+            )
+          );
+        },
       ),
-      backgroundColor: Colors.white24,
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(Icons.account_circle),
-          color: Colors.lightBlue,
-          iconSize: 40,
-          onPressed: (){},
-        ),
-      ),
-      body:ListView.builder(
-        itemCount: campaignData.getCampaignNum(),
-        itemBuilder: (BuildContext context, int index) => CampaignUI(
-          campaigntitle: campaignData.getCampaignTitle(index),
-          like: campaignData.getLike(index),
-          scrap: campaignData.getScrap(index),
-          info: campaignData.getInfo(index),
-        ),
-      )
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,12 +32,21 @@ class LoginTest extends StatelessWidget {
   }
 }
 
-class HomeTest extends StatelessWidget {
+class HomeTest extends StatefulWidget {
   const HomeTest({Key? key}) : super(key: key);
 
-  void setUser(String? Name){
-   Username = Name;
+  @override
+  State<HomeTest> createState() => _HomeTestState();
+}
+
+class _HomeTestState extends State<HomeTest> {
+  void setUser(String? userName, String? userImage, String? userEmail) {
+    Username = userName;
+    Email = userEmail;
+    Url = userImage;
   }
+
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +57,12 @@ class HomeTest extends StatelessWidget {
           if (!snapshot.hasData) {
             return LoginWidget();
           } else {
-            setUser(snapshot.data?.displayName);
+            setUser(snapshot.data?.displayName,snapshot.data?.photoURL ,snapshot.data?.email);
+            firestore.collection('User').doc('${snapshot.data?.email}').set({
+              "Name" : '${snapshot.data?.displayName}',
+              "ProfileImage" : '${snapshot.data?.photoURL}',
+              "Email" : '${snapshot.data?.email}',
+            });
             return MyApp2();
           }
         },
@@ -64,14 +79,15 @@ class LogoutWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          ElevatedButton(onPressed: FirebaseAuth.instance.signOut,
-              child: Text("logout"))
+          ElevatedButton(
+            onPressed: FirebaseAuth.instance.signOut,
+            child: Text("logout"),
+          )
         ],
       ),
     );
   }
 }
-
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -86,7 +102,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -96,20 +113,67 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
+
+
+  }
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  void setUser(){
+    firestore.collection('User_test').doc('test').set({
+      "Name" : 'Test'
+
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: signInWithGoogle,
-              child: Text('Login'),
-            )
-          ],
+      body: Container(
+        color: Color(0xff8AB39D),
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 200.0, bottom: 10),
+                child: Image(
+                  image: AssetImage('images/Icon.png'),
+                  width: 112,
+                  height: 112,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Grow',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 25),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 150.0),
+                child: ElevatedButton.icon(
+                  onPressed: (){
+                    //setUser();
+                    signInWithGoogle();
+                  },
+                  label: Text(
+                    'Sign in with Google',
+                    style: TextStyle(color: Colors.black, fontSize: 20),
+                  ),
+                  icon: Image(
+                    image: AssetImage('images/google.png'),
+                    width: 30,
+                    height: 30,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
