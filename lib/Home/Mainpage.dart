@@ -13,7 +13,7 @@ import 'package:home/drawer.dart';
 import 'printImage.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({Key? key, Todo? passTodo}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -29,6 +29,9 @@ class _HomeState extends State<Home> {
       //return AssetImage('images/account.png');
     }
   }
+
+  Todo passTodo = Todo('', false, DateTime(2022,05,21), 0, false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,34 +139,26 @@ class _HomeState extends State<Home> {
                                   Border.all(color: deepGreen, width: 3),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(15.0)),),
-                              child: StreamBuilder<QuerySnapshot>(
-                                stream: FirebaseFirestore.instance.collection('MainPage/todo').snapshots(),
-                                builder: (context, snapshot) {
-
-                                  if(snapshot.connectionState == ConnectionState.waiting){
-                                    return CircularProgressIndicator();
-                                  }
-
-                                  return ListView.builder(
-                                    shrinkWrap: true,
-                                      itemCount: todoData.getNum(),
-                                      itemBuilder: (context, index){
-                                        return ListTile(
-                                            title: Text('${todoData.getContent(index)}'),
-                                            leading: Theme(
-                                              data: ThemeData(unselectedWidgetColor: deepGreen),
-                                              child: Checkbox(
-                                                  value: false,
-                                                  onChanged: (bool? value){
-                                                    _deleteTodo(todoData.TodoDB[index]);
-                                                  }),
-                                            )
-                                        );
-                                  }
-                                  );
+                              child: ListView.builder(
+                                        shrinkWrap: true,
+                                          itemCount: todoData.getNum(),
+                                          itemBuilder: (context, index){
+                                            return ListTile(
+                                                title: Text('${todoData.getContent(index)}'),
+                                                leading: Theme(
+                                                  data: ThemeData(unselectedWidgetColor: deepGreen),
+                                                  child: Checkbox(
+                                                      value: false,
+                                                      onChanged: (bool? value){
+                                                        _deleteTodo(todoData.TodoDB[index]);
+                                                      }),
+                                                )
+                                            );
                                 }
                               ),
-                            )
+                            ),
+                  Text('Tap to add',
+                  style: TextStyle(color: deepGreen),)
                 ],
               ),
             ),
@@ -193,6 +188,7 @@ class _HomeState extends State<Home> {
     setState(() {
       todoData.addTodo(todo);
     });
+    FirebaseFirestore.instance.collection('User').doc('$Email').update({'array' : FieldValue.arrayUnion([todo.todoContent])});
   }
 
   void _deleteTodo(Todo todo) {
@@ -203,10 +199,6 @@ class _HomeState extends State<Home> {
       makePercentAndPointCorrect();
       imageNum = (percent ~/ 20 + 1) * 20;
     });
-  }
-
-  void CampaginToTodo(Campaign campaign){
-
   }
 
   void AddTodoDialog() {
@@ -241,10 +233,9 @@ class _HomeState extends State<Home> {
                       textInputAction: TextInputAction.go,
                       onSubmitted: (value) {
                         Todo newTodo =
-                            Todo(inputString.text, false, DateTime.now(), 50);
+                            Todo(inputString.text, false, DateTime.now(), 50, false);
                         _addTodo(newTodo);
                         inputString.clear();
-                        FirebaseFirestore.instance.collection('MainPage').add({'text' : '?!!'});
                       },
                       showCursor: false,
                       style: TextStyle(
@@ -270,4 +261,3 @@ class _HomeState extends State<Home> {
         });
   }
 }
-
