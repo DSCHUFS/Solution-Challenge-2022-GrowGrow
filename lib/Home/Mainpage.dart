@@ -151,7 +151,7 @@ class _HomeState extends State<Home> {
                                     onChanged: (bool? value){
                                       _deleteTodo(todoData.TodoDB[index]);
                                     }),
-                              )
+                              ),
                           );
                         }
                     ),

@@ -13,6 +13,10 @@ class TodoData{
     return TodoDB[index].todoContent;
   }
 
+  bool? checkCampaign(index){
+    TodoDB[index].isCampaign? true : false;
+  }
+
   void addTodo(Todo todo){
     TodoDB.add(todo);
   }

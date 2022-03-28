@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:home/resources.dart';
+import 'package:home/Home/todoData.dart';
+import 'package:home/Home/todo.dart';
 
 class CampaignInfo extends StatelessWidget {
   const CampaignInfo({
@@ -27,6 +31,8 @@ class CampaignInfo extends StatelessWidget {
   }
 
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -127,7 +133,10 @@ class CampaignInfo extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       primary: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      FirebaseFirestore.instance.collection('User').doc('$Email').update({'Todos' : FieldValue.arrayUnion([this.campaigntitle])});
+                      todoData.addTodo(Todo(this.campaigntitle, false, DateTime(2022,5,10), 50, true));
+                      },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Text(
