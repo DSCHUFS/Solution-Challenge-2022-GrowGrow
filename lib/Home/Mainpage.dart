@@ -1,8 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:home/Campaign/Campaign.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:home/resources.dart';
 import 'todo.dart';
@@ -73,7 +75,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           CircularPercentIndicator(
-            radius: 250.0,
+            radius: MediaQuery.of(context).size.width * 0.5,
             lineWidth: 10.0,
             percent: percent / 100,
             center: PrintImage(),
@@ -125,20 +127,32 @@ class _HomeState extends State<Home> {
                                   Border.all(color: deepGreen, width: 3),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(15.0)),),
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                  itemCount: todoData.getNum(),
-                                  itemBuilder: (context, index){
-                                    return CheckboxListTile(
-                                        title: Text('${todoData.getContent(index)}'),
-                                        checkColor: deepGreen,
-                                        controlAffinity: ListTileControlAffinity.leading,
-                                        value: false,
-                                        onChanged: (bool? value){
-                                          timeDilation = value! ? 1.0 : 5.0;
-                                          _deleteTodo(todoData.TodoDB[index]);
-                                        });
-                              }
+                              child: StreamBuilder<QuerySnapshot>(
+                                stream: FirebaseFirestore.instance.collection('MainPage/todo').snapshots(),
+                                builder: (context, snapshot) {
+
+                                  if(snapshot.connectionState == ConnectionState.waiting){
+                                    return CircularProgressIndicator();
+                                  }
+
+                                  return ListView.builder(
+                                    shrinkWrap: true,
+                                      itemCount: todoData.getNum(),
+                                      itemBuilder: (context, index){
+                                        return ListTile(
+                                            title: Text('${todoData.getContent(index)}'),
+                                            leading: Theme(
+                                              data: ThemeData(unselectedWidgetColor: deepGreen),
+                                              child: Checkbox(
+                                                  value: false,
+                                                  onChanged: (bool? value){
+                                                    _deleteTodo(todoData.TodoDB[index]);
+                                                  }),
+                                            )
+                                        );
+                                  }
+                                  );
+                                }
                               ),
                             )
                 ],
@@ -182,6 +196,10 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void CampaginToTodo(Campaign campaign){
+
+  }
+
   void AddTodoDialog() {
     showDialog(
         context: context,
@@ -193,12 +211,21 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(10.0),
                     side: BorderSide(color: deepGreen, width: 3)),
                 //Dialog Main Title
-                title: Text("TODO", style: TextStyle(
-                  fontFamily: 'Inter-Regular',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                )),
-
+                title: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: Icon(
+                            Icons.add_box,
+                            color: deepGreen),
+                      ),
+                      Text("Add todo", style: TextStyle(
+                        fontFamily: 'Inter-Regular',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      )),
+                    ]
+                ),
                 actions: <Widget>[
                   TextField(
                       controller: inputString,
@@ -208,6 +235,7 @@ class _HomeState extends State<Home> {
                             Todo(inputString.text, false, DateTime.now(), 50);
                         _addTodo(newTodo);
                         inputString.clear();
+                        FirebaseFirestore.instance.collection('MainPage').add({'text' : '?!!'});
                       },
                       showCursor: false,
                       style: TextStyle(

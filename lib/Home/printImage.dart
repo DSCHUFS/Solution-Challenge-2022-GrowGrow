@@ -32,7 +32,7 @@ class Images extends StatefulWidget {
 class _ImagesState extends State<Images> {
   @override
   Widget build(BuildContext context) {
-    return Image.asset('images/${imageNum}%.png', width: 150);
+    return Image.asset('images/${imageNum}%.png', width: MediaQuery.of(context).size.width * 0.3);
   }
 }
 
@@ -53,7 +53,7 @@ class _ButtonState extends State<Button> {
       },
       style: ElevatedButton.styleFrom(
         primary: lightGreen,
-        fixedSize: Size(250, 250),
+        fixedSize: Size(MediaQuery.of(context).size.width * 0.5, MediaQuery.of(context).size.width * 0.5),
         shape: CircleBorder(),
       ),);
   }
@@ -98,7 +98,7 @@ class _ButtonState extends State<Button> {
                             color: Colors.red,
                             size: 30.0,
                           ),
-                          Text('Texas,\nUnited State',
+                          Text('Daejeon,\nKorea',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: 'Inter-Regular',
