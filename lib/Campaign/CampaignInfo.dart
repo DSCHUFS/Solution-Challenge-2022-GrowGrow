@@ -10,6 +10,7 @@ class CampaignInfo extends StatelessWidget {
     required this.info,
     required this.campaigndate,
     required this.cpimage,
+    required this.todo,
   }) : super(key: key);
 
   final String campaigntitle;
@@ -18,6 +19,7 @@ class CampaignInfo extends StatelessWidget {
   final String info;
   final String campaigndate;
   final String cpimage;
+  final String todo;
 
   ImageProvider<Object> imagecheck() {
     if (cpimage == 'null')

@@ -12,6 +12,7 @@ class CampaignUI extends StatelessWidget {
     required this.info,
     required this.image,
     required this.date,
+    required this.todo,
     this.onPressed,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class CampaignUI extends StatelessWidget {
   final String image;
   final String date;
   final Function()? onPressed;
+  final String todo;
 
   ImageProvider<Object> imagecheck(){
     if (image == 'null')
@@ -50,6 +52,7 @@ class CampaignUI extends StatelessWidget {
                   info: info,
                   campaigndate: date,
                   cpimage: image,
+                  todo: todo,
                 )
             ),
           );

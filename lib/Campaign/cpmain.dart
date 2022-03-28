@@ -35,7 +35,8 @@ class CampaignMain extends StatelessWidget {
                 scrap: snapshot.data!.docs[index]['Scrap'],
                 info: snapshot.data!.docs[index]['Info'],
                 image: snapshot.data!.docs[index]['Image'],
-                date: snapshot.data!.docs[index]['Date']
+                date: snapshot.data!.docs[index]['Date'],
+                todo: snapshot.data!.docs[index]['Todo']
               ),
             )
           );
