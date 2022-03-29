@@ -3,7 +3,8 @@
 
 ## GrowGrow project 🌳
 This project is for individuals who want to combat desertification and land degration.<br>
-You can plant your tree while completing meaningful tasks and participating in Green Campaign!
+You can plant your tree while completing meaningful tasks and participating in Green Campaign!<br>
+Among the 17 goals, we selected **[15. Life on land]** as the goal of the project.
 
 Click 👉 <a href="https://youtu.be/PLamOjb9Eoo"><img src="https://img.shields.io/badge/DemoVideo-FF0000?style=flat-square&logo=youtube&logoColor=white"/></a><br>
 
