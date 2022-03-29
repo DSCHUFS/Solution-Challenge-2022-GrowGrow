@@ -1,16 +1,18 @@
-# home
+![header](https://capsule-render.vercel.app/api?type=waving&color=41B06B&height=300&section=header&text=GrowGrow&fontSize=90&fontColor=FFFFFF)
+![image](https://github.com/DSCHUFS/Solution-Challenge-2022-GrowGrow/blob/master/images/Icon.png)
 
-A new Flutter project.
+This project is for individuals who want to combat desertification and land degration.<br>
+You can plant your tree while completing meaningful tasks and participating in Green Campaign!
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Technology we've used 🛠
+<img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/> <img src="https://img.shields.io/badge/GoogleMaps-4285F4?style=flat-square&logo=googlemaps&logoColor=white"/>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Screens
+### Home 🏚
+### Campaign 📢
+### News 📰
+### My Tree 🌲
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
