@@ -12,7 +12,7 @@ Click 👉 <a href="https://youtu.be/PLamOjb9Eoo"><img src="https://img.shields.
 <br>
 
 ## Screens 📱
-### Home 🏚
+### Home 🏠
 
 You can add TODOS in this page.
 
