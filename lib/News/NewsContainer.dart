@@ -124,7 +124,7 @@ class _NewsContainerState extends State<NewsContainer> {
                       top: 130,
                       child: Container(
                         height: 85,
-                        width: 1000,
+                        width: 10000,
                         color: Colors.black45,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -132,42 +132,38 @@ class _NewsContainerState extends State<NewsContainer> {
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.fromLTRB(8, 8, 8, 3),
-                              child: Expanded(
-                                child: Text(
-                                  title,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              child: Text(
+                                title,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.fromLTRB(8, 15, 8, 0),
-                              child: Expanded(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Text(
-                                        //DateFormat("yyyy-MM-dd").format(time),
-                                        (DateString),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      writer,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text(
+                                      //DateFormat("yyyy-MM-dd").format(time),
+                                      (DateString),
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  Text(
+                                    writer,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -181,7 +177,7 @@ class _NewsContainerState extends State<NewsContainer> {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Container(
-                width: 1000,
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: Divider(
                   color: Color(0xff41B06B),
                   thickness: 2.0,

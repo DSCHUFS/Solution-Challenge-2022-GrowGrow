@@ -146,7 +146,9 @@ class _ButtonState extends State<Button> {
                             imageNum = (percent ~/ 20 + 1) * 20;
                             tree += 1;
                           });
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyTree()));
+
+                          Navigator.pop(context);
+                          //Navigator.push(context, MaterialPageRoute(builder: (context) => MyTree()));
                           },
                       ),
                       Padding(

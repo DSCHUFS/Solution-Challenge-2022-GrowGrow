@@ -113,6 +113,7 @@ class _MyApp2State extends State<MyApp2> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        //resizeToAvoidBottomInset : false,
         body: Pages[CurrentIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

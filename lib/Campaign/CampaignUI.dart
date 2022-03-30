@@ -114,65 +114,58 @@ class CampaignUI extends StatelessWidget {
                   child: Row(
                       children: <Widget> [
                         Container( //like button
-                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          child: Expanded(
-                            child: LikeButton(
-                              size: 34,
-                              circleColor: const CircleColor(end: Colors.redAccent, start: Colors.red),
-                              bubblesColor: const BubblesColor(
-                                  dotPrimaryColor: Colors.red,
-                                  dotSecondaryColor: Colors.red
-                              ),
-                              likeBuilder: (bool isLiked){
-                                return Icon(
-                                    Icons.favorite_rounded,
-                                    color: isLiked? Colors.red : Colors.grey,
-                                    size: 34
-                                );
-                              },
+                          child: LikeButton(
+                            size: 34,
+                            circleColor: const CircleColor(end: Colors.redAccent, start: Colors.red),
+                            bubblesColor: const BubblesColor(
+                                dotPrimaryColor: Colors.red,
+                                dotSecondaryColor: Colors.red
                             ),
+                            likeBuilder: (bool isLiked){
+                              return Icon(
+                                  Icons.favorite_rounded,
+                                  color: isLiked? Colors.red : Colors.grey,
+                                  size: 34
+                              );
+                            },
                           ),
                         ),
 
                         Container( //scrap button
                           margin: const EdgeInsets.fromLTRB(0, 0, 2, 0),
-                          child: Expanded(
-                            child: LikeButton(
-                              size: 35,
-                              circleColor: const CircleColor(start: Colors.yellow, end: Colors.yellowAccent),
-                              bubblesColor: const BubblesColor(
-                                  dotPrimaryColor: Colors.yellow,
-                                  dotSecondaryColor: Colors.yellow
-                              ),
-                              likeBuilder: (bool isLiked){
-                                return Icon(
-                                    Icons.star_rounded,
-                                    color: isLiked? Colors.yellow : Colors.grey,
-                                    size: 40
-                                );
-                              },
+                          child: LikeButton(
+                            size: 35,
+                            circleColor: const CircleColor(start: Colors.yellow, end: Colors.yellowAccent),
+                            bubblesColor: const BubblesColor(
+                                dotPrimaryColor: Colors.yellow,
+                                dotSecondaryColor: Colors.yellow
                             ),
+                            likeBuilder: (bool isLiked){
+                              return Icon(
+                                  Icons.star_rounded,
+                                  color: isLiked? Colors.yellow : Colors.grey,
+                                  size: 40
+                              );
+                            },
                           ),
                         ),
 
                         Container( //scrap button
                           margin: const EdgeInsets.fromLTRB(3 , 0, 2, 0),
-                          child: Expanded(
-                            child: LikeButton(
-                              size: 33,
-                              circleColor: const CircleColor(start: Colors.green, end: Colors.greenAccent),
-                              bubblesColor: const BubblesColor(
-                                  dotPrimaryColor: Colors.green,
-                                  dotSecondaryColor: Colors.green
-                              ),
-                              likeBuilder: (bool isLiked){
-                                return Icon(
-                                    Icons.volunteer_activism,
-                                    color: isLiked? Colors.green : Colors.grey,
-                                    size: 33
-                                );
-                              },
+                          child: LikeButton(
+                            size: 33,
+                            circleColor: const CircleColor(start: Colors.green, end: Colors.greenAccent),
+                            bubblesColor: const BubblesColor(
+                                dotPrimaryColor: Colors.green,
+                                dotSecondaryColor: Colors.green
                             ),
+                            likeBuilder: (bool isLiked){
+                              return Icon(
+                                  Icons.volunteer_activism,
+                                  color: isLiked? Colors.green : Colors.grey,
+                                  size: 33
+                              );
+                            },
                           ),
                         ),
                       ]
