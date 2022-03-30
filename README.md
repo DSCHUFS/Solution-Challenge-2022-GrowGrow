@@ -10,7 +10,7 @@ Demo Video<br>
 <a href="https://youtu.be/PLamOjb9Eoo"><img src="https://img.shields.io/badge/DemoVideo-FF0000?style=flat-square&logo=youtube&logoColor=white"/></a><br>
 
 APK file<br>
-<a href="https://drive.google.com/file/d/1oG3y-eb6e9BsFqrvHjXVpfLFZrAqZiaX/view"><img src="https://img.shields.io/badge/download-4285F4?style=flat-square&logo=googledrive&logoColor=white"/></a><br>
+<a href="https://drive.google.com/file/d/14t39V_Tn86F1BO7y_1p8DYOFKxp9pJqr/view?usp=sharing"><img src="https://img.shields.io/badge/download-4285F4?style=flat-square&logo=googledrive&logoColor=white"/></a><br>
 
 ## Technology we've used 🛠
 <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/> <img src="https://img.shields.io/badge/GoogleMaps-4285F4?style=flat-square&logo=googlemaps&logoColor=white"/>
