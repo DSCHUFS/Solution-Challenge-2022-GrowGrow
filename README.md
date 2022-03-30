@@ -6,7 +6,11 @@ This project is for individuals who want to combat desertification and land degr
 You can plant your tree while completing meaningful tasks and participating in Green Campaign!<br>
 Among the 17 goals, we selected **[15. Life on land]** as the goal of the project.
 
-Click 👉 <a href="https://youtu.be/PLamOjb9Eoo"><img src="https://img.shields.io/badge/DemoVideo-FF0000?style=flat-square&logo=youtube&logoColor=white"/></a><br>
+Demo Video<br>
+<a href="https://youtu.be/PLamOjb9Eoo"><img src="https://img.shields.io/badge/DemoVideo-FF0000?style=flat-square&logo=youtube&logoColor=white"/></a><br>
+
+APK file<br>
+<a href="https://drive.google.com/file/d/1oG3y-eb6e9BsFqrvHjXVpfLFZrAqZiaX/view"><img src="https://img.shields.io/badge/download-4285F4?style=flat-square&logo=googledrive&logoColor=white"/></a><br>
 
 ## Technology we've used 🛠
 <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/> <img src="https://img.shields.io/badge/GoogleMaps-4285F4?style=flat-square&logo=googlemaps&logoColor=white"/>
@@ -54,7 +58,7 @@ The trees planted so far can be found on this menu. The "tree" picture represent
 ![image](https://github.com/DSCHUFS/Solution-Challenge-2022-GrowGrow/blob/master/READMEfiles/06_MyTree.gif)<br><br>
 
 
-## tributers 👩‍💻👨‍💻
+## Contributors 👩‍💻👨‍💻
 <a href="https://github.com/Kangsoyeong"><img src="https://img.shields.io/badge/Kang Soyeong-black?style=social-square&logo=github&logoColor=white"/></a>
 <a href="https://github.com/z5zH0"><img src="https://img.shields.io/badge/Kim Yejin-black?style=social-square&logo=github&logoColor=white"/></a>
 <a href="https://github.com/park-hyunbin"><img src="https://img.shields.io/badge/Park Hyunbin-black?style=social-square&logo=github&logoColor=white"/></a>
