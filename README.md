@@ -54,7 +54,7 @@ The trees planted so far can be found on this menu. The "tree" picture represent
 ![image](https://github.com/DSCHUFS/Solution-Challenge-2022-GrowGrow/blob/master/READMEfiles/06_MyTree.gif)<br><br>
 
 
-## Attributers 👩‍💻👨‍💻
+## tributers 👩‍💻👨‍💻
 <a href="https://github.com/Kangsoyeong"><img src="https://img.shields.io/badge/Kang Soyeong-black?style=social-square&logo=github&logoColor=white"/></a>
 <a href="https://github.com/z5zH0"><img src="https://img.shields.io/badge/Kim Yejin-black?style=social-square&logo=github&logoColor=white"/></a>
 <a href="https://github.com/park-hyunbin"><img src="https://img.shields.io/badge/Park Hyunbin-black?style=social-square&logo=github&logoColor=white"/></a>
